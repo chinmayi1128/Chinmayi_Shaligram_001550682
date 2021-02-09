@@ -65,6 +65,7 @@ public class View_Address extends javax.swing.JPanel {
         add(Lbl_City);
         Lbl_City.setBounds(160, 240, 60, 17);
 
+        txt_Street.setEditable(false);
         txt_Street.setForeground(new java.awt.Color(153, 153, 153));
         txt_Street.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(153, 153, 153), new java.awt.Color(153, 153, 153)));
         txt_Street.addActionListener(new java.awt.event.ActionListener() {
@@ -80,6 +81,7 @@ public class View_Address extends javax.swing.JPanel {
         add(Lbl_State);
         Lbl_State.setBounds(160, 300, 60, 17);
 
+        txt_City2.setEditable(false);
         txt_City2.setForeground(new java.awt.Color(153, 153, 153));
         txt_City2.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(153, 153, 153), new java.awt.Color(153, 153, 153)));
         txt_City2.addActionListener(new java.awt.event.ActionListener() {
@@ -95,11 +97,13 @@ public class View_Address extends javax.swing.JPanel {
         add(Lbl_Zip);
         Lbl_Zip.setBounds(160, 360, 80, 17);
 
+        txt_State.setEditable(false);
         txt_State.setForeground(new java.awt.Color(153, 153, 153));
         txt_State.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(153, 153, 153), new java.awt.Color(153, 153, 153)));
         add(txt_State);
         txt_State.setBounds(300, 300, 111, 20);
 
+        txt_Zip.setEditable(false);
         txt_Zip.setForeground(new java.awt.Color(153, 153, 153));
         txt_Zip.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(153, 153, 153), new java.awt.Color(153, 153, 153)));
         add(txt_Zip);
@@ -111,7 +115,6 @@ public class View_Address extends javax.swing.JPanel {
 
         jLabel2.setIcon(new javax.swing.ImageIcon("/Users/chinmayi_shaligram/Library/Containers/com.microsoft.Word/Data/Library/Application Support/Microsoft/Office/16.0/WebServiceCache/AllUsers/NetBeansProjects/Assignment_1/src/Images/back.jpg")); // NOI18N
         jLabel2.setText("jLabel2");
-        jLabel2.setSize(new java.awt.Dimension(1110, 610));
         add(jLabel2);
         jLabel2.setBounds(-60, -80, 1540, 860);
     }// </editor-fold>//GEN-END:initComponents

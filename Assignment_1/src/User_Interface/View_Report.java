@@ -11,6 +11,7 @@ import Model.Savings;
 import Model.Checkin;
 import Model.Liscense;
 import Model.Medical;
+import javax.swing.Icon;
 
 /**
  *
@@ -40,7 +41,6 @@ public class View_Report extends javax.swing.JPanel {
     this.medical = medical;
         
         
-       
     
     displayperson();
     displayaddress();
@@ -86,7 +86,6 @@ public class View_Report extends javax.swing.JPanel {
         Lbl_Zip = new javax.swing.JLabel();
         Lbl_Address = new javax.swing.JLabel();
         Lbl_Expiry = new javax.swing.JLabel();
-        txt_Photo = new javax.swing.JTextField();
         Lbl_Photo = new javax.swing.JLabel();
         txt_Liscense = new javax.swing.JTextField();
         txt_Issue = new javax.swing.JTextField();
@@ -129,8 +128,8 @@ public class View_Report extends javax.swing.JPanel {
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
+        Lbl_Img = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
 
         setLayout(null);
 
@@ -139,6 +138,7 @@ public class View_Report extends javax.swing.JPanel {
         add(Lbl_Weight);
         Lbl_Weight.setBounds(180, 210, 50, 17);
 
+        Txt_LN.setEditable(false);
         Txt_LN.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(153, 153, 153), new java.awt.Color(153, 153, 153)));
         Txt_LN.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -153,6 +153,7 @@ public class View_Report extends javax.swing.JPanel {
         add(Lbl_SSN);
         Lbl_SSN.setBounds(180, 250, 40, 17);
 
+        Txt_Phno.setEditable(false);
         Txt_Phno.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(153, 153, 153), new java.awt.Color(153, 153, 153)));
         Txt_Phno.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -162,6 +163,7 @@ public class View_Report extends javax.swing.JPanel {
         add(Txt_Phno);
         Txt_Phno.setBounds(110, 210, 47, 19);
 
+        Txt_DOB.setEditable(false);
         Txt_DOB.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(153, 153, 153), new java.awt.Color(153, 153, 153)));
         add(Txt_DOB);
         Txt_DOB.setBounds(110, 250, 50, 20);
@@ -182,6 +184,7 @@ public class View_Report extends javax.swing.JPanel {
         add(Lbl_LastName);
         Lbl_LastName.setBounds(20, 170, 70, 17);
 
+        Txt_Age.setEditable(false);
         Txt_Age.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(153, 153, 153), new java.awt.Color(153, 153, 153)));
         Txt_Age.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -196,6 +199,7 @@ public class View_Report extends javax.swing.JPanel {
         add(Lbl_Phno);
         Lbl_Phno.setBounds(20, 210, 100, 17);
 
+        Txt_Ht.setEditable(false);
         Txt_Ht.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(153, 153, 153), new java.awt.Color(153, 153, 153)));
         Txt_Ht.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -215,6 +219,7 @@ public class View_Report extends javax.swing.JPanel {
         add(Lbl_Age);
         Lbl_Age.setBounds(180, 130, 40, 17);
 
+        Txt_FN.setEditable(false);
         Txt_FN.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(153, 153, 153), new java.awt.Color(153, 153, 153)));
         add(Txt_FN);
         Txt_FN.setBounds(110, 130, 47, 20);
@@ -224,10 +229,12 @@ public class View_Report extends javax.swing.JPanel {
         add(Lbl_Height);
         Lbl_Height.setBounds(180, 170, 60, 17);
 
+        Txt_Wt.setEditable(false);
         Txt_Wt.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(153, 153, 153), new java.awt.Color(153, 153, 153)));
         add(Txt_Wt);
         Txt_Wt.setBounds(230, 210, 54, 20);
 
+        txt_Street.setEditable(false);
         txt_Street.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(153, 153, 153), new java.awt.Color(153, 153, 153)));
         txt_Street.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -237,6 +244,7 @@ public class View_Report extends javax.swing.JPanel {
         add(txt_Street);
         txt_Street.setBounds(440, 130, 70, 18);
 
+        txt_City2.setEditable(false);
         txt_City2.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(153, 153, 153), new java.awt.Color(153, 153, 153)));
         txt_City2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -246,10 +254,12 @@ public class View_Report extends javax.swing.JPanel {
         add(txt_City2);
         txt_City2.setBounds(440, 160, 70, 20);
 
+        txt_State.setEditable(false);
         txt_State.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(153, 153, 153), new java.awt.Color(153, 153, 153)));
         add(txt_State);
         txt_State.setBounds(400, 470, 83, 20);
 
+        txt_Zip.setEditable(false);
         txt_Zip.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(153, 153, 153), new java.awt.Color(153, 153, 153)));
         txt_Zip.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -290,21 +300,13 @@ public class View_Report extends javax.swing.JPanel {
         add(Lbl_Expiry);
         Lbl_Expiry.setBounds(610, 210, 80, 21);
 
-        txt_Photo.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(153, 153, 153), new java.awt.Color(153, 153, 153)));
-        txt_Photo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_PhotoActionPerformed(evt);
-            }
-        });
-        add(txt_Photo);
-        txt_Photo.setBounds(710, 250, 73, 20);
-
         Lbl_Photo.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
         Lbl_Photo.setText("Photo ID");
         Lbl_Photo.setToolTipText("");
         add(Lbl_Photo);
         Lbl_Photo.setBounds(610, 250, 60, 17);
 
+        txt_Liscense.setEditable(false);
         txt_Liscense.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(153, 153, 153), new java.awt.Color(153, 153, 153)));
         txt_Liscense.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -314,6 +316,7 @@ public class View_Report extends javax.swing.JPanel {
         add(txt_Liscense);
         txt_Liscense.setBounds(710, 210, 73, 20);
 
+        txt_Issue.setEditable(false);
         txt_Issue.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(153, 153, 153), new java.awt.Color(153, 153, 153)));
         txt_Issue.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -323,6 +326,7 @@ public class View_Report extends javax.swing.JPanel {
         add(txt_Issue);
         txt_Issue.setBounds(710, 170, 73, 20);
 
+        txt_Expiry.setEditable(false);
         txt_Expiry.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(153, 153, 153), new java.awt.Color(153, 153, 153)));
         add(txt_Expiry);
         txt_Expiry.setBounds(710, 130, 73, 20);
@@ -369,6 +373,7 @@ public class View_Report extends javax.swing.JPanel {
         add(Lbl_Acctype);
         Lbl_Acctype.setBounds(20, 550, 93, 20);
 
+        txt_BName2.setEditable(false);
         txt_BName2.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(153, 153, 153), new java.awt.Color(153, 153, 153)));
         txt_BName2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -378,6 +383,7 @@ public class View_Report extends javax.swing.JPanel {
         add(txt_BName2);
         txt_BName2.setBounds(120, 380, 83, 20);
 
+        txt_BRouting.setEditable(false);
         txt_BRouting.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(153, 153, 153), new java.awt.Color(153, 153, 153)));
         txt_BRouting.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -387,6 +393,7 @@ public class View_Report extends javax.swing.JPanel {
         add(txt_BRouting);
         txt_BRouting.setBounds(120, 430, 83, 20);
 
+        txt_AccNo.setEditable(false);
         txt_AccNo.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(153, 153, 153), new java.awt.Color(153, 153, 153)));
         txt_AccNo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -396,11 +403,12 @@ public class View_Report extends javax.swing.JPanel {
         add(txt_AccNo);
         txt_AccNo.setBounds(120, 470, 83, 20);
 
+        txt_Balance.setEditable(false);
         txt_Balance.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(153, 153, 153), new java.awt.Color(153, 153, 153)));
         add(txt_Balance);
         txt_Balance.setBounds(120, 510, 83, 20);
 
-        txt_Acctype.setText("Savings ");
+        txt_Acctype.setEditable(false);
         txt_Acctype.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(153, 153, 153), new java.awt.Color(153, 153, 153)));
         txt_Acctype.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -415,6 +423,7 @@ public class View_Report extends javax.swing.JPanel {
         add(jLabel5);
         jLabel5.setBounds(560, 540, 39, 17);
 
+        txt_Record.setEditable(false);
         txt_Record.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(153, 153, 153), new java.awt.Color(153, 153, 153)));
         txt_Record.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -424,10 +433,12 @@ public class View_Report extends javax.swing.JPanel {
         add(txt_Record);
         txt_Record.setBounds(680, 420, 101, 20);
 
+        txt_BGroup.setEditable(false);
         txt_BGroup.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(153, 153, 153), new java.awt.Color(153, 153, 153)));
         add(txt_BGroup);
         txt_BGroup.setBounds(680, 380, 101, 20);
 
+        txt_Diabetes.setEditable(false);
         txt_Diabetes.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(153, 153, 153), new java.awt.Color(153, 153, 153)));
         txt_Diabetes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -437,6 +448,7 @@ public class View_Report extends javax.swing.JPanel {
         add(txt_Diabetes);
         txt_Diabetes.setBounds(680, 460, 101, 20);
 
+        txt_BPressure.setEditable(false);
         txt_BPressure.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(153, 153, 153), new java.awt.Color(153, 153, 153)));
         txt_BPressure.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -466,6 +478,7 @@ public class View_Report extends javax.swing.JPanel {
         add(jLabel6);
         jLabel6.setBounds(560, 500, 102, 17);
 
+        txt_Covid.setEditable(false);
         txt_Covid.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(153, 153, 153), new java.awt.Color(153, 153, 153)));
         add(txt_Covid);
         txt_Covid.setBounds(680, 540, 101, 20);
@@ -495,6 +508,7 @@ public class View_Report extends javax.swing.JPanel {
         add(Lbl_AccType);
         Lbl_AccType.setBounds(280, 540, 93, 26);
 
+        txt_BName.setEditable(false);
         txt_BName.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(153, 153, 153), new java.awt.Color(153, 153, 153)));
         txt_BName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -504,6 +518,7 @@ public class View_Report extends javax.swing.JPanel {
         add(txt_BName);
         txt_BName.setBounds(440, 200, 70, 20);
 
+        txt_BRouting1.setEditable(false);
         txt_BRouting1.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(153, 153, 153), new java.awt.Color(153, 153, 153)));
         txt_BRouting1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -513,7 +528,7 @@ public class View_Report extends javax.swing.JPanel {
         add(txt_BRouting1);
         txt_BRouting1.setBounds(400, 510, 83, 20);
 
-        txt_AccNo1.setText("Checkings");
+        txt_AccNo1.setEditable(false);
         txt_AccNo1.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(153, 153, 153), new java.awt.Color(153, 153, 153)));
         txt_AccNo1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -528,6 +543,7 @@ public class View_Report extends javax.swing.JPanel {
         add(jLabel7);
         jLabel7.setBounds(336, 17, 180, 30);
 
+        txt_SSN.setEditable(false);
         txt_SSN.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(153, 153, 153), new java.awt.Color(153, 153, 153)));
         txt_SSN.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -537,10 +553,12 @@ public class View_Report extends javax.swing.JPanel {
         add(txt_SSN);
         txt_SSN.setBounds(230, 250, 54, 20);
 
+        Txt_BRouting.setEditable(false);
         Txt_BRouting.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(153, 153, 153), new java.awt.Color(153, 153, 153)));
         add(Txt_BRouting);
         Txt_BRouting.setBounds(400, 420, 83, 20);
 
+        Txt_BName.setEditable(false);
         Txt_BName.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(153, 153, 153), new java.awt.Color(153, 153, 153)));
         add(Txt_BName);
         Txt_BName.setBounds(400, 380, 83, 20);
@@ -560,14 +578,14 @@ public class View_Report extends javax.swing.JPanel {
         add(jLabel10);
         jLabel10.setBounds(610, 330, 140, 20);
 
+        Lbl_Img.setText("Photo");
+        add(Lbl_Img);
+        Lbl_Img.setBounds(720, 250, 53, 16);
+
         jLabel11.setIcon(new javax.swing.ImageIcon("/Users/chinmayi_shaligram/Library/Containers/com.microsoft.Word/Data/Library/Application Support/Microsoft/Office/16.0/WebServiceCache/AllUsers/NetBeansProjects/Assignment_1/src/Images/back.jpg")); // NOI18N
         jLabel11.setText("jLabel11");
         add(jLabel11);
-        jLabel11.setBounds(-10, 0, 1110, 690);
-
-        jLabel12.setText("jLabel12");
-        add(jLabel12);
-        jLabel12.setBounds(890, 230, 53, 16);
+        jLabel11.setBounds(0, -30, 1150, 830);
     }// </editor-fold>//GEN-END:initComponents
 
     private void Txt_LNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Txt_LNActionPerformed
@@ -593,10 +611,6 @@ public class View_Report extends javax.swing.JPanel {
     private void txt_City2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_City2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_City2ActionPerformed
-
-    private void txt_PhotoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_PhotoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txt_PhotoActionPerformed
 
     private void txt_LiscenseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_LiscenseActionPerformed
         // TODO add your handling code here:
@@ -671,6 +685,7 @@ public class View_Report extends javax.swing.JPanel {
     private javax.swing.JLabel Lbl_Expiry;
     private javax.swing.JLabel Lbl_Firstname;
     private javax.swing.JLabel Lbl_Height;
+    private javax.swing.JLabel Lbl_Img;
     private javax.swing.JLabel Lbl_Issue;
     private javax.swing.JLabel Lbl_LastName;
     private javax.swing.JLabel Lbl_Liscense;
@@ -696,7 +711,6 @@ public class View_Report extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -721,7 +735,6 @@ public class View_Report extends javax.swing.JPanel {
     private javax.swing.JTextField txt_Expiry;
     private javax.swing.JTextField txt_Issue;
     private javax.swing.JTextField txt_Liscense;
-    private javax.swing.JTextField txt_Photo;
     private javax.swing.JTextField txt_Record;
     private javax.swing.JTextField txt_SSN;
     private javax.swing.JTextField txt_State;
@@ -769,7 +782,8 @@ public class View_Report extends javax.swing.JPanel {
        txt_Liscense.setText(liscense.getLiscense_No());
        txt_Issue.setText(liscense.getIssue_Date());
        txt_Expiry.setText(liscense.getExpiry_Date());
-       txt_Photo.setText(liscense.getPhoto());//To change body of generated methods, choose Tools | Templates.
+
+//To change body of generated methods, choose Tools | Templates.
     }
 
     private void displaymedical() {
@@ -779,5 +793,7 @@ public class View_Report extends javax.swing.JPanel {
      txt_BPressure.setText(medical.getBlood_Pressure());
      txt_Covid.setText(medical.getCovid());//To change body of generated methods, choose Tools | Templates.
     }
+
+    
     
 }

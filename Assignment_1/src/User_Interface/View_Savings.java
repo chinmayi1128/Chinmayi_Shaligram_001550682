@@ -59,6 +59,7 @@ public class View_Savings extends javax.swing.JPanel {
         add(Lbl_Acctype);
         Lbl_Acctype.setBounds(150, 400, 100, 17);
 
+        txt_BName2.setEditable(false);
         txt_BName2.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(153, 153, 153), new java.awt.Color(153, 153, 153)));
         txt_BName2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -68,6 +69,7 @@ public class View_Savings extends javax.swing.JPanel {
         add(txt_BName2);
         txt_BName2.setBounds(340, 200, 92, 20);
 
+        txt_BRouting.setEditable(false);
         txt_BRouting.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(153, 153, 153), new java.awt.Color(153, 153, 153)));
         txt_BRouting.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -77,6 +79,7 @@ public class View_Savings extends javax.swing.JPanel {
         add(txt_BRouting);
         txt_BRouting.setBounds(340, 250, 92, 20);
 
+        txt_AccNo.setEditable(false);
         txt_AccNo.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(153, 153, 153), new java.awt.Color(153, 153, 153)));
         txt_AccNo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -86,11 +89,18 @@ public class View_Savings extends javax.swing.JPanel {
         add(txt_AccNo);
         txt_AccNo.setBounds(340, 300, 92, 20);
 
+        txt_Balance.setEditable(false);
         txt_Balance.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(153, 153, 153), new java.awt.Color(153, 153, 153)));
         add(txt_Balance);
         txt_Balance.setBounds(340, 350, 92, 20);
 
+        txt_Acctype.setEditable(false);
         txt_Acctype.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(153, 153, 153), new java.awt.Color(153, 153, 153)));
+        txt_Acctype.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_AcctypeActionPerformed(evt);
+            }
+        });
         add(txt_Acctype);
         txt_Acctype.setBounds(340, 400, 92, 20);
 
@@ -136,6 +146,10 @@ public class View_Savings extends javax.swing.JPanel {
     private void txt_AccNoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_AccNoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_AccNoActionPerformed
+
+    private void txt_AcctypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_AcctypeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_AcctypeActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

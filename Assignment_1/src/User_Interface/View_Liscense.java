@@ -63,18 +63,22 @@ public class View_Liscense extends javax.swing.JPanel {
         setToolTipText("");
         setLayout(null);
 
+        txt_Liscense.setEditable(false);
         txt_Liscense.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(153, 153, 153), new java.awt.Color(153, 153, 153)));
         add(txt_Liscense);
         txt_Liscense.setBounds(320, 260, 101, 20);
 
+        txt_Issue.setEditable(false);
         txt_Issue.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(153, 153, 153), new java.awt.Color(153, 153, 153)));
         add(txt_Issue);
         txt_Issue.setBounds(320, 300, 101, 20);
 
+        txt_Expiry.setEditable(false);
         txt_Expiry.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(153, 153, 153), new java.awt.Color(153, 153, 153)));
         add(txt_Expiry);
         txt_Expiry.setBounds(320, 340, 101, 20);
 
+        txt_Blood.setEditable(false);
         txt_Blood.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(153, 153, 153), new java.awt.Color(153, 153, 153)));
         txt_Blood.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

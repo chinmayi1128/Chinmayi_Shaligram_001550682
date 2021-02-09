@@ -71,10 +71,12 @@ public class View_Medical extends javax.swing.JPanel {
         add(jLabel4);
         jLabel4.setBounds(150, 330, 110, 17);
 
+        txt_Covid.setEditable(false);
         txt_Covid.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(153, 153, 153), new java.awt.Color(153, 153, 153)));
         add(txt_Covid);
         txt_Covid.setBounds(330, 380, 101, 20);
 
+        txt_Record.setEditable(false);
         txt_Record.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(153, 153, 153), new java.awt.Color(153, 153, 153)));
         add(txt_Record);
         txt_Record.setBounds(330, 180, 101, 20);
@@ -84,10 +86,12 @@ public class View_Medical extends javax.swing.JPanel {
         add(jLabel5);
         jLabel5.setBounds(150, 370, 50, 17);
 
+        txt_BGroup.setEditable(false);
         txt_BGroup.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(153, 153, 153), new java.awt.Color(153, 153, 153)));
         add(txt_BGroup);
         txt_BGroup.setBounds(330, 230, 101, 20);
 
+        txt_Diabetes.setEditable(false);
         txt_Diabetes.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(153, 153, 153), new java.awt.Color(153, 153, 153)));
         txt_Diabetes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -97,6 +101,7 @@ public class View_Medical extends javax.swing.JPanel {
         add(txt_Diabetes);
         txt_Diabetes.setBounds(330, 280, 101, 20);
 
+        txt_BPressure.setEditable(false);
         txt_BPressure.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(153, 153, 153), new java.awt.Color(153, 153, 153)));
         txt_BPressure.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

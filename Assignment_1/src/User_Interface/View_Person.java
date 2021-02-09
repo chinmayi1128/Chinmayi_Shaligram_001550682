@@ -58,6 +58,7 @@ public class View_Person extends javax.swing.JPanel {
 
         setLayout(null);
 
+        Txt_Age.setEditable(false);
         Txt_Age.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(153, 153, 153), new java.awt.Color(153, 153, 153)));
         Txt_Age.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -67,6 +68,7 @@ public class View_Person extends javax.swing.JPanel {
         add(Txt_Age);
         Txt_Age.setBounds(490, 250, 95, 20);
 
+        Txt_Ht.setEditable(false);
         Txt_Ht.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(153, 153, 153), new java.awt.Color(153, 153, 153)));
         Txt_Ht.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -76,6 +78,7 @@ public class View_Person extends javax.swing.JPanel {
         add(Txt_Ht);
         Txt_Ht.setBounds(490, 300, 95, 20);
 
+        Txt_Wt.setEditable(false);
         Txt_Wt.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(153, 153, 153), new java.awt.Color(153, 153, 153)));
         Txt_Wt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -85,14 +88,17 @@ public class View_Person extends javax.swing.JPanel {
         add(Txt_Wt);
         Txt_Wt.setBounds(490, 350, 95, 20);
 
+        Txt_FN.setEditable(false);
         Txt_FN.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(153, 153, 153), new java.awt.Color(153, 153, 153)));
         add(Txt_FN);
         Txt_FN.setBounds(200, 250, 100, 20);
 
+        Txt_SSN.setEditable(false);
         Txt_SSN.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(153, 153, 153), new java.awt.Color(153, 153, 153)));
         add(Txt_SSN);
         Txt_SSN.setBounds(490, 400, 95, 20);
 
+        Txt_LN.setEditable(false);
         Txt_LN.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(153, 153, 153), new java.awt.Color(153, 153, 153)));
         Txt_LN.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -112,6 +118,7 @@ public class View_Person extends javax.swing.JPanel {
         add(Lbl_Weight);
         Lbl_Weight.setBounds(390, 350, 60, 17);
 
+        Txt_Phno.setEditable(false);
         Txt_Phno.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(153, 153, 153), new java.awt.Color(153, 153, 153)));
         Txt_Phno.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -126,6 +133,7 @@ public class View_Person extends javax.swing.JPanel {
         add(Lbl_SSN);
         Lbl_SSN.setBounds(390, 400, 40, 17);
 
+        Txt_DOB.setEditable(false);
         Txt_DOB.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(153, 153, 153), new java.awt.Color(153, 153, 153)));
         add(Txt_DOB);
         Txt_DOB.setBounds(200, 400, 101, 20);

@@ -67,6 +67,7 @@
     </Component>
     <Component class="javax.swing.JTextField" name="txt_Street">
       <Properties>
+        <Property name="editable" type="boolean" value="false"/>
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="99" green="99" red="99" type="rgb"/>
         </Property>
@@ -103,6 +104,7 @@
     </Component>
     <Component class="javax.swing.JTextField" name="txt_City2">
       <Properties>
+        <Property name="editable" type="boolean" value="false"/>
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="99" green="99" red="99" type="rgb"/>
         </Property>
@@ -139,6 +141,7 @@
     </Component>
     <Component class="javax.swing.JTextField" name="txt_State">
       <Properties>
+        <Property name="editable" type="boolean" value="false"/>
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="99" green="99" red="99" type="rgb"/>
         </Property>
@@ -159,6 +162,7 @@
     </Component>
     <Component class="javax.swing.JTextField" name="txt_Zip">
       <Properties>
+        <Property name="editable" type="boolean" value="false"/>
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="99" green="99" red="99" type="rgb"/>
         </Property>
@@ -195,9 +199,6 @@
           <Image iconType="2" name="/Users/chinmayi_shaligram/Library/Containers/com.microsoft.Word/Data/Library/Application Support/Microsoft/Office/16.0/WebServiceCache/AllUsers/NetBeansProjects/Assignment_1/src/Images/back.jpg"/>
         </Property>
         <Property name="text" type="java.lang.String" value="jLabel2"/>
-        <Property name="size" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-          <Dimension value="[1110, 610]"/>
-        </Property>
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">

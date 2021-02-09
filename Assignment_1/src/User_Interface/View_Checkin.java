@@ -52,6 +52,7 @@ public class View_Checkin extends javax.swing.JPanel {
 
         setLayout(null);
 
+        txt_BName.setEditable(false);
         txt_BName.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(153, 153, 153), new java.awt.Color(153, 153, 153)));
         txt_BName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -61,6 +62,7 @@ public class View_Checkin extends javax.swing.JPanel {
         add(txt_BName);
         txt_BName.setBounds(370, 250, 92, 20);
 
+        txt_BRouting.setEditable(false);
         txt_BRouting.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(153, 153, 153), new java.awt.Color(153, 153, 153)));
         txt_BRouting.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -70,6 +72,7 @@ public class View_Checkin extends javax.swing.JPanel {
         add(txt_BRouting);
         txt_BRouting.setBounds(370, 300, 92, 20);
 
+        txt_AccNo.setEditable(false);
         txt_AccNo.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(153, 153, 153), new java.awt.Color(153, 153, 153)));
         txt_AccNo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -79,6 +82,7 @@ public class View_Checkin extends javax.swing.JPanel {
         add(txt_AccNo);
         txt_AccNo.setBounds(370, 350, 92, 20);
 
+        txt_Balance.setEditable(false);
         txt_Balance.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(153, 153, 153), new java.awt.Color(153, 153, 153)));
         add(txt_Balance);
         txt_Balance.setBounds(370, 400, 92, 20);
@@ -89,6 +93,7 @@ public class View_Checkin extends javax.swing.JPanel {
         add(Lbl_Savings);
         Lbl_Savings.setBounds(220, 150, 322, 74);
 
+        txt_Acctype.setEditable(false);
         txt_Acctype.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(153, 153, 153), new java.awt.Color(153, 153, 153)));
         add(txt_Acctype);
         txt_Acctype.setBounds(370, 450, 92, 20);
@@ -125,7 +130,7 @@ public class View_Checkin extends javax.swing.JPanel {
         jLabel2.setIcon(new javax.swing.ImageIcon("/Users/chinmayi_shaligram/Library/Containers/com.microsoft.Word/Data/Library/Application Support/Microsoft/Office/16.0/WebServiceCache/AllUsers/NetBeansProjects/Assignment_1/src/Images/back.jpg")); // NOI18N
         jLabel2.setText("jLabel2");
         add(jLabel2);
-        jLabel2.setBounds(-50, -310, 1030, 1410);
+        jLabel2.setBounds(-50, -310, 1070, 1410);
     }// </editor-fold>//GEN-END:initComponents
 
     private void txt_BNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_BNameActionPerformed
