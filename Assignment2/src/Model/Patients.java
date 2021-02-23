@@ -17,8 +17,7 @@ public class Patients {
     private boolean patient_s;
     private String category;
     private ArrayList<VitalSigns> History;
-//    VitalSigns currentVital;
-    VitalSigns vs; //current Vital Sign
+    VitalSigns vs; 
     
     
 
@@ -78,7 +77,7 @@ public class Patients {
         else if (13 >= vs.getAge()){
             category = "Adolesent";
         }
-           
+     
         boolean VitalSignNormalStatus=false;
 
         if (VitalAttribute.equals("RespiratoryRateRange")){
@@ -129,6 +128,8 @@ public class Patients {
             category = "Adolesent";
         }
         System.out.println("patient category is this : "+category);
+        
+        patient_s=false;
 
         if (RespiratoryRateRange(category) && HeartRateRange(category) && BloodPressureRange(category) && WtKGRange(category) && WtPoundsRange(category)) {
             patient_s= true;
@@ -268,22 +269,6 @@ public class Patients {
     }
     
 }
-    
-    
-    //Test Cases
-//    public void CheckData(){
-//        
-//        patients.setName("Chinmayi");
-//        System.out.println("Test Cases");
-//        VitalSigns vs = new VitalSigns();
-//        
-//        vs.setAge(0);
-//        vs.setRespiratory_Rate(40);
-//        vs.setHeart_Rate(130);
-//        vs.setBlood_Pressure(60);
-//        vs.setWt_Kg(2.5);
-//        vs.setWt_Pound(6);
-//        
         
         
         

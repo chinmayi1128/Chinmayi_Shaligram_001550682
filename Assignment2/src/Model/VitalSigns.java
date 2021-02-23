@@ -11,7 +11,7 @@ package Model;
  */
 public class VitalSigns {
     
-    private int Age;
+    private float Age;
     private int Respiratory_Rate;
     private int Heart_Rate;
     private int Blood_Pressure;
@@ -19,11 +19,11 @@ public class VitalSigns {
     private double Wt_Pound;
     private String Date;
 
-    public int getAge() {
+    public float getAge() {
         return Age;
     }
 
-    public void setAge(int Age) {
+    public void setAge(float Age) {
         this.Age = Age;
     }
 
