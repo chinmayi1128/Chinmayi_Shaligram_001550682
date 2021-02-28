@@ -11,7 +11,9 @@ import Model.Savings;
 import Model.Checkin;
 import Model.Liscense;
 import Model.Medical;
+import java.awt.Image;
 import javax.swing.Icon;
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -130,6 +132,7 @@ public class View_Report extends javax.swing.JPanel {
         jLabel10 = new javax.swing.JLabel();
         Lbl_Img = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
 
         setLayout(null);
 
@@ -366,12 +369,12 @@ public class View_Report extends javax.swing.JPanel {
         Lbl_Accno.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
         Lbl_Accno.setText("Account No.");
         add(Lbl_Accno);
-        Lbl_Accno.setBounds(20, 510, 83, 20);
+        Lbl_Accno.setBounds(20, 510, 90, 20);
 
         Lbl_Acctype.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
         Lbl_Acctype.setText("Account Type");
         add(Lbl_Acctype);
-        Lbl_Acctype.setBounds(20, 550, 93, 20);
+        Lbl_Acctype.setBounds(20, 550, 100, 20);
 
         txt_BName2.setEditable(false);
         txt_BName2.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(153, 153, 153), new java.awt.Color(153, 153, 153)));
@@ -421,7 +424,7 @@ public class View_Report extends javax.swing.JPanel {
         jLabel5.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
         jLabel5.setText("Covid");
         add(jLabel5);
-        jLabel5.setBounds(560, 540, 39, 17);
+        jLabel5.setBounds(560, 540, 70, 17);
 
         txt_Record.setEditable(false);
         txt_Record.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(153, 153, 153), new java.awt.Color(153, 153, 153)));
@@ -466,17 +469,17 @@ public class View_Report extends javax.swing.JPanel {
         jLabel3.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
         jLabel3.setText("Blood Group");
         add(jLabel3);
-        jLabel3.setBounds(560, 420, 86, 17);
+        jLabel3.setBounds(560, 420, 90, 17);
 
         jLabel4.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
         jLabel4.setText("Diabetes");
         add(jLabel4);
-        jLabel4.setBounds(560, 460, 59, 17);
+        jLabel4.setBounds(560, 460, 60, 17);
 
         jLabel6.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
         jLabel6.setText("Blood Pressure");
         add(jLabel6);
-        jLabel6.setBounds(560, 500, 102, 17);
+        jLabel6.setBounds(560, 500, 110, 17);
 
         txt_Covid.setEditable(false);
         txt_Covid.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(153, 153, 153), new java.awt.Color(153, 153, 153)));
@@ -491,22 +494,22 @@ public class View_Report extends javax.swing.JPanel {
         Lbl_Routing1.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
         Lbl_Routing1.setText("Routing Number");
         add(Lbl_Routing1);
-        Lbl_Routing1.setBounds(280, 430, 113, 17);
+        Lbl_Routing1.setBounds(250, 430, 140, 17);
 
         Lbl_Balance1.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
         Lbl_Balance1.setText("Bank Balance");
         add(Lbl_Balance1);
-        Lbl_Balance1.setBounds(280, 470, 89, 17);
+        Lbl_Balance1.setBounds(280, 470, 100, 17);
 
         Lbl_AccNo.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
         Lbl_AccNo.setText("Account Number");
         add(Lbl_AccNo);
-        Lbl_AccNo.setBounds(280, 510, 115, 17);
+        Lbl_AccNo.setBounds(250, 510, 140, 17);
 
         Lbl_AccType.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
         Lbl_AccType.setText("Account Type");
         add(Lbl_AccType);
-        Lbl_AccType.setBounds(280, 540, 93, 26);
+        Lbl_AccType.setBounds(280, 540, 100, 26);
 
         txt_BName.setEditable(false);
         txt_BName.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(153, 153, 153), new java.awt.Color(153, 153, 153)));
@@ -580,12 +583,14 @@ public class View_Report extends javax.swing.JPanel {
 
         Lbl_Img.setText("Photo");
         add(Lbl_Img);
-        Lbl_Img.setBounds(720, 250, 53, 16);
-
-        jLabel11.setIcon(new javax.swing.ImageIcon("/Users/chinmayi_shaligram/Library/Containers/com.microsoft.Word/Data/Library/Application Support/Microsoft/Office/16.0/WebServiceCache/AllUsers/NetBeansProjects/Assignment_1/src/Images/back.jpg")); // NOI18N
-        jLabel11.setText("jLabel11");
+        Lbl_Img.setBounds(710, 250, 80, 80);
         add(jLabel11);
         jLabel11.setBounds(0, -30, 1150, 830);
+
+        jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/User_Interface/back.jpg"))); // NOI18N
+        jLabel12.setText("jLabel3");
+        add(jLabel12);
+        jLabel12.setBounds(0, 0, 1080, 600);
     }// </editor-fold>//GEN-END:initComponents
 
     private void Txt_LNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Txt_LNActionPerformed
@@ -711,6 +716,7 @@ public class View_Report extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -776,13 +782,23 @@ public class View_Report extends javax.swing.JPanel {
     txt_AccNo.setText(checkin.getAccount_No1());
     txt_Acctype.setText(checkin.getAccount_Type1());//To change body of generated methods, choose Tools | Templates.
     }
+    
+    public ImageIcon ResizeImage (String ImagePath){
+    ImageIcon MyImage = new ImageIcon(ImagePath);
+    Image img = MyImage.getImage();
+    Image newImg = img.getScaledInstance(120,120, Image.SCALE_SMOOTH);
+    ImageIcon image = new ImageIcon(newImg);
+    return image;
+        
+    }
 
     private void displayliscense() {
          
        txt_Liscense.setText(liscense.getLiscense_No());
        txt_Issue.setText(liscense.getIssue_Date());
        txt_Expiry.setText(liscense.getExpiry_Date());
-
+       Lbl_Img.setIcon(ResizeImage(liscense.getPath()));
+       
 //To change body of generated methods, choose Tools | Templates.
     }
 

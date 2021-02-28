@@ -49,6 +49,7 @@ public class View_Checkin extends javax.swing.JPanel {
         Lbl_AccType = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
 
         setLayout(null);
 
@@ -60,7 +61,7 @@ public class View_Checkin extends javax.swing.JPanel {
             }
         });
         add(txt_BName);
-        txt_BName.setBounds(370, 250, 92, 20);
+        txt_BName.setBounds(370, 250, 92, 18);
 
         txt_BRouting.setEditable(false);
         txt_BRouting.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(153, 153, 153), new java.awt.Color(153, 153, 153)));
@@ -70,7 +71,7 @@ public class View_Checkin extends javax.swing.JPanel {
             }
         });
         add(txt_BRouting);
-        txt_BRouting.setBounds(370, 300, 92, 20);
+        txt_BRouting.setBounds(370, 300, 92, 18);
 
         txt_AccNo.setEditable(false);
         txt_AccNo.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(153, 153, 153), new java.awt.Color(153, 153, 153)));
@@ -80,12 +81,12 @@ public class View_Checkin extends javax.swing.JPanel {
             }
         });
         add(txt_AccNo);
-        txt_AccNo.setBounds(370, 350, 92, 20);
+        txt_AccNo.setBounds(370, 350, 92, 18);
 
         txt_Balance.setEditable(false);
         txt_Balance.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(153, 153, 153), new java.awt.Color(153, 153, 153)));
         add(txt_Balance);
-        txt_Balance.setBounds(370, 400, 92, 20);
+        txt_Balance.setBounds(370, 400, 92, 18);
 
         Lbl_Savings.setFont(new java.awt.Font("Lucida Grande", 1, 24)); // NOI18N
         Lbl_Savings.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -96,41 +97,45 @@ public class View_Checkin extends javax.swing.JPanel {
         txt_Acctype.setEditable(false);
         txt_Acctype.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(153, 153, 153), new java.awt.Color(153, 153, 153)));
         add(txt_Acctype);
-        txt_Acctype.setBounds(370, 450, 92, 20);
+        txt_Acctype.setBounds(370, 450, 92, 18);
 
         Lbl_BName.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
         Lbl_BName.setText("Bank Name");
         add(Lbl_BName);
-        Lbl_BName.setBounds(180, 260, 90, 17);
+        Lbl_BName.setBounds(180, 260, 90, 19);
 
         Lbl_Routing.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
         Lbl_Routing.setText("Routing Number");
         add(Lbl_Routing);
-        Lbl_Routing.setBounds(180, 310, 113, 17);
+        Lbl_Routing.setBounds(180, 310, 120, 19);
 
         Lbl_Balance.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
         Lbl_Balance.setText("Bank Balance");
         add(Lbl_Balance);
-        Lbl_Balance.setBounds(180, 360, 89, 17);
+        Lbl_Balance.setBounds(180, 360, 100, 19);
 
         Lbl_AccNo.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
         Lbl_AccNo.setText("Account Number");
         add(Lbl_AccNo);
-        Lbl_AccNo.setBounds(180, 400, 115, 17);
+        Lbl_AccNo.setBounds(180, 400, 120, 19);
 
         Lbl_AccType.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
         Lbl_AccType.setText("Account Type");
         add(Lbl_AccType);
-        Lbl_AccType.setBounds(180, 450, 93, 17);
+        Lbl_AccType.setBounds(180, 450, 110, 19);
 
-        jLabel1.setIcon(new javax.swing.ImageIcon("/Users/chinmayi_shaligram/Library/Containers/com.microsoft.Word/Data/Library/Application Support/Microsoft/Office/16.0/WebServiceCache/AllUsers/NetBeansProjects/Assignment_1/src/Images/checkin.png")); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/User_Interface/checkin.png"))); // NOI18N
         add(jLabel1);
-        jLabel1.setBounds(180, 140, 70, 80);
+        jLabel1.setBounds(190, 150, 70, 80);
 
-        jLabel2.setIcon(new javax.swing.ImageIcon("/Users/chinmayi_shaligram/Library/Containers/com.microsoft.Word/Data/Library/Application Support/Microsoft/Office/16.0/WebServiceCache/AllUsers/NetBeansProjects/Assignment_1/src/Images/back.jpg")); // NOI18N
         jLabel2.setText("jLabel2");
         add(jLabel2);
         jLabel2.setBounds(-50, -310, 1070, 1410);
+
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/User_Interface/back.jpg"))); // NOI18N
+        jLabel3.setText("jLabel3");
+        add(jLabel3);
+        jLabel3.setBounds(0, 0, 1080, 600);
     }// </editor-fold>//GEN-END:initComponents
 
     private void txt_BNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_BNameActionPerformed
@@ -155,6 +160,7 @@ public class View_Checkin extends javax.swing.JPanel {
     private javax.swing.JLabel Lbl_Savings;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JTextField txt_AccNo;
     private javax.swing.JTextField txt_Acctype;
     private javax.swing.JTextField txt_BName;

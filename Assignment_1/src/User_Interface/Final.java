@@ -70,6 +70,8 @@ public class Final extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setSize(new java.awt.Dimension(1100, 610));
 
+        jPanel1.setMaximumSize(new java.awt.Dimension(1000, 650));
+        jPanel1.setMinimumSize(new java.awt.Dimension(450, 0));
         jPanel1.setPreferredSize(new java.awt.Dimension(1000, 650));
 
         jPanel2.setPreferredSize(new java.awt.Dimension(100, 0));
@@ -78,17 +80,18 @@ public class Final extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1000, Short.MAX_VALUE)
+            .addGap(0, 600, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 800, Short.MAX_VALUE)
+            .addGap(0, 650, Short.MAX_VALUE)
         );
 
         SplitPane.setRightComponent(jPanel1);
 
         jPanel2.setBackground(new java.awt.Color(204, 255, 255));
-        jPanel2.setPreferredSize(new java.awt.Dimension(350, 800));
+        jPanel2.setMinimumSize(new java.awt.Dimension(350, 650));
+        jPanel2.setPreferredSize(new java.awt.Dimension(500, 800));
         jPanel2.setLayout(null);
 
         Btn_Create_demo.setBackground(new java.awt.Color(204, 204, 255));
@@ -149,7 +152,7 @@ public class Final extends javax.swing.JFrame {
             }
         });
         jPanel2.add(Btn_View_Checkings);
-        Btn_View_Checkings.setBounds(170, 280, 150, 29);
+        Btn_View_Checkings.setBounds(180, 280, 150, 29);
 
         Btn_Create_Checkings.setBackground(new java.awt.Color(204, 204, 255));
         Btn_Create_Checkings.setText("Create Checkings");
@@ -159,7 +162,7 @@ public class Final extends javax.swing.JFrame {
             }
         });
         jPanel2.add(Btn_Create_Checkings);
-        Btn_Create_Checkings.setBounds(20, 280, 139, 29);
+        Btn_Create_Checkings.setBounds(30, 280, 139, 29);
 
         Create_Medical.setBackground(new java.awt.Color(204, 204, 255));
         Create_Medical.setText("Create Medical Records");
@@ -169,7 +172,7 @@ public class Final extends javax.swing.JFrame {
             }
         });
         jPanel2.add(Create_Medical);
-        Create_Medical.setBounds(0, 400, 170, 29);
+        Create_Medical.setBounds(0, 390, 170, 29);
 
         Btn_View_Medical.setBackground(new java.awt.Color(204, 204, 255));
         Btn_View_Medical.setText("View medical Records");
@@ -179,7 +182,7 @@ public class Final extends javax.swing.JFrame {
             }
         });
         jPanel2.add(Btn_View_Medical);
-        Btn_View_Medical.setBounds(170, 400, 160, 29);
+        Btn_View_Medical.setBounds(180, 390, 160, 29);
 
         Btn_Create_License.setBackground(new java.awt.Color(204, 204, 255));
         Btn_Create_License.setText("Create Liscense");
@@ -189,7 +192,7 @@ public class Final extends javax.swing.JFrame {
             }
         });
         jPanel2.add(Btn_Create_License);
-        Btn_Create_License.setBounds(20, 340, 130, 29);
+        Btn_Create_License.setBounds(30, 330, 130, 29);
 
         Btn_View_License.setBackground(new java.awt.Color(204, 204, 255));
         Btn_View_License.setText("View Liscense");
@@ -199,7 +202,7 @@ public class Final extends javax.swing.JFrame {
             }
         });
         jPanel2.add(Btn_View_License);
-        Btn_View_License.setBounds(180, 340, 140, 29);
+        Btn_View_License.setBounds(190, 330, 140, 29);
 
         Btn_View.setBackground(new java.awt.Color(204, 204, 255));
         Btn_View.setText("View Report");
@@ -209,7 +212,7 @@ public class Final extends javax.swing.JFrame {
             }
         });
         jPanel2.add(Btn_View);
-        Btn_View.setBounds(120, 460, 118, 29);
+        Btn_View.setBounds(120, 470, 118, 29);
 
         Btn_Create_Savings.setBackground(new java.awt.Color(204, 204, 255));
         Btn_Create_Savings.setText("Create Savings");
@@ -219,7 +222,7 @@ public class Final extends javax.swing.JFrame {
             }
         });
         jPanel2.add(Btn_Create_Savings);
-        Btn_Create_Savings.setBounds(20, 230, 136, 29);
+        Btn_Create_Savings.setBounds(30, 230, 136, 29);
 
         jLabel1.setFont(new java.awt.Font("Lucida Grande", 1, 18)); // NOI18N
         jLabel1.setText("Demographic Information");
@@ -233,12 +236,12 @@ public class Final extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addComponent(SplitPane, javax.swing.GroupLayout.DEFAULT_SIZE, 773, Short.MAX_VALUE)
+                .addComponent(SplitPane, javax.swing.GroupLayout.DEFAULT_SIZE, 957, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(SplitPane)
+            .addComponent(SplitPane, javax.swing.GroupLayout.DEFAULT_SIZE, 654, Short.MAX_VALUE)
         );
 
         pack();

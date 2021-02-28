@@ -47,6 +47,8 @@ public class Create_Checkin extends javax.swing.JPanel {
         txt_Acctype = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
         setLayout(null);
 
@@ -67,17 +69,17 @@ public class Create_Checkin extends javax.swing.JPanel {
         Lbl_Routing.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
         Lbl_Routing.setText("Routing Number");
         add(Lbl_Routing);
-        Lbl_Routing.setBounds(130, 240, 113, 17);
+        Lbl_Routing.setBounds(130, 240, 170, 17);
 
         Lbl_Balance.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
         Lbl_Balance.setText("Bank Balance");
         add(Lbl_Balance);
-        Lbl_Balance.setBounds(130, 290, 89, 17);
+        Lbl_Balance.setBounds(130, 280, 100, 17);
 
         Lbl_AccNo.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
         Lbl_AccNo.setText("Account Number");
         add(Lbl_AccNo);
-        Lbl_AccNo.setBounds(130, 330, 115, 17);
+        Lbl_AccNo.setBounds(130, 320, 170, 17);
 
         txt_BName.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(153, 153, 153), new java.awt.Color(153, 153, 153)));
         txt_BName.addActionListener(new java.awt.event.ActionListener() {
@@ -91,7 +93,7 @@ public class Create_Checkin extends javax.swing.JPanel {
         Lbl_AccType.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
         Lbl_AccType.setText("Account Type");
         add(Lbl_AccType);
-        Lbl_AccType.setBounds(130, 370, 93, 17);
+        Lbl_AccType.setBounds(130, 360, 100, 17);
 
         txt_BRouting.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(153, 153, 153), new java.awt.Color(153, 153, 153)));
         txt_BRouting.addActionListener(new java.awt.event.ActionListener() {
@@ -124,14 +126,22 @@ public class Create_Checkin extends javax.swing.JPanel {
         txt_Acctype.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(153, 153, 153), new java.awt.Color(153, 153, 153)));
         add(txt_Acctype);
         txt_Acctype.setBounds(330, 360, 92, 20);
-
-        jLabel3.setIcon(new javax.swing.ImageIcon("/Users/chinmayi_shaligram/Library/Containers/com.microsoft.Word/Data/Library/Application Support/Microsoft/Office/16.0/WebServiceCache/AllUsers/NetBeansProjects/Assignment_1/src/Images/checkin.png")); // NOI18N
         add(jLabel3);
-        jLabel3.setBounds(120, 90, 72, 80);
+        jLabel3.setBounds(120, 90, 0, 80);
 
-        jLabel1.setIcon(new javax.swing.ImageIcon("/Users/chinmayi_shaligram/Library/Containers/com.microsoft.Word/Data/Library/Application Support/Microsoft/Office/16.0/WebServiceCache/AllUsers/NetBeansProjects/Assignment_1/src/Images/back.jpg")); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/User_Interface/checkin.png"))); // NOI18N
         add(jLabel1);
-        jLabel1.setBounds(-50, -170, 1180, 1080);
+        jLabel1.setBounds(130, -410, 1180, 1080);
+
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/User_Interface/back.jpg"))); // NOI18N
+        jLabel4.setText("jLabel3");
+        add(jLabel4);
+        jLabel4.setBounds(0, 0, 1080, 600);
+
+        jLabel2.setPreferredSize(new java.awt.Dimension(1400, 800));
+        jLabel2.setRequestFocusEnabled(false);
+        add(jLabel2);
+        jLabel2.setBounds(210, 80, 70, 70);
     }// </editor-fold>//GEN-END:initComponents
 
     private void Btn_saveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_saveActionPerformed
@@ -170,7 +180,9 @@ public class Create_Checkin extends javax.swing.JPanel {
     private javax.swing.JLabel Lbl_Routing;
     private javax.swing.JLabel Lbl_Savings;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JTextField txt_AccNo;
     private javax.swing.JTextField txt_Acctype;
     private javax.swing.JTextField txt_BName;

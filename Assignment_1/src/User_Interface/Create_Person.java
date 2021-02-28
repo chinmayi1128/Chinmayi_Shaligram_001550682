@@ -35,6 +35,7 @@ public class Create_Person extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         Txt_Age = new javax.swing.JTextField();
         Txt_Ht = new javax.swing.JTextField();
@@ -54,7 +55,10 @@ public class Create_Person extends javax.swing.JPanel {
         Lbl_Weight = new javax.swing.JLabel();
         Lbl_SSN = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+
+        jLabel2.setText(" ");
+        jLabel2.setPreferredSize(new java.awt.Dimension(1423, 768));
 
         setLayout(null);
 
@@ -139,7 +143,7 @@ public class Create_Person extends javax.swing.JPanel {
         Lbl_LastName.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
         Lbl_LastName.setText("Last Name");
         add(Lbl_LastName);
-        Lbl_LastName.setBounds(40, 300, 70, 17);
+        Lbl_LastName.setBounds(40, 300, 90, 17);
 
         Lbl_Phno.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
         Lbl_Phno.setText("Phone Number ");
@@ -154,32 +158,31 @@ public class Create_Person extends javax.swing.JPanel {
         Lbl_Age.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
         Lbl_Age.setText("Age");
         add(Lbl_Age);
-        Lbl_Age.setBounds(330, 250, 27, 17);
+        Lbl_Age.setBounds(330, 240, 50, 30);
 
         Lbl_Height.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
         Lbl_Height.setText("Height");
         add(Lbl_Height);
-        Lbl_Height.setBounds(330, 300, 45, 17);
+        Lbl_Height.setBounds(330, 300, 50, 17);
 
         Lbl_Weight.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
         Lbl_Weight.setText("Weight");
         add(Lbl_Weight);
-        Lbl_Weight.setBounds(330, 350, 47, 17);
+        Lbl_Weight.setBounds(330, 350, 60, 17);
 
         Lbl_SSN.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
         Lbl_SSN.setText("SSN");
         add(Lbl_SSN);
-        Lbl_SSN.setBounds(330, 400, 26, 17);
+        Lbl_SSN.setBounds(330, 400, 40, 17);
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/person.png"))); // NOI18N
         add(jLabel4);
         jLabel4.setBounds(170, 120, 70, 70);
 
-        jLabel2.setIcon(new javax.swing.ImageIcon("/Users/chinmayi_shaligram/Library/Containers/com.microsoft.Word/Data/Library/Application Support/Microsoft/Office/16.0/WebServiceCache/AllUsers/NetBeansProjects/Assignment_1/src/Images/back.jpg")); // NOI18N
-        jLabel2.setText("jLabel2");
-        jLabel2.setPreferredSize(new java.awt.Dimension(1423, 768));
-        add(jLabel2);
-        jLabel2.setBounds(0, -20, 1940, 690);
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/User_Interface/back.jpg"))); // NOI18N
+        jLabel3.setText("jLabel3");
+        add(jLabel3);
+        jLabel3.setBounds(0, 0, 1080, 600);
     }// </editor-fold>//GEN-END:initComponents
 
     private void Txt_AgeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Txt_AgeActionPerformed
@@ -237,6 +240,7 @@ public class Create_Person extends javax.swing.JPanel {
     private javax.swing.JTextField Txt_Wt;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     // End of variables declaration//GEN-END:variables
 }

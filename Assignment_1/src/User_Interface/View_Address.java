@@ -44,6 +44,8 @@ public class View_Address extends javax.swing.JPanel {
         txt_Zip = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
 
         jLabel1.setText("jLabel1");
 
@@ -58,7 +60,7 @@ public class View_Address extends javax.swing.JPanel {
         Lbl_Street.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
         Lbl_Street.setText("Street");
         add(Lbl_Street);
-        Lbl_Street.setBounds(160, 180, 40, 17);
+        Lbl_Street.setBounds(160, 180, 80, 17);
 
         Lbl_City.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
         Lbl_City.setText("City");
@@ -108,15 +110,20 @@ public class View_Address extends javax.swing.JPanel {
         txt_Zip.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(153, 153, 153), new java.awt.Color(153, 153, 153)));
         add(txt_Zip);
         txt_Zip.setBounds(300, 360, 111, 20);
-
-        jLabel4.setIcon(new javax.swing.ImageIcon("/Users/chinmayi_shaligram/Library/Containers/com.microsoft.Word/Data/Library/Application Support/Microsoft/Office/16.0/WebServiceCache/AllUsers/NetBeansProjects/Assignment_1/src/Images/address.jpg")); // NOI18N
         add(jLabel4);
-        jLabel4.setBounds(170, 60, 72, 70);
-
-        jLabel2.setIcon(new javax.swing.ImageIcon("/Users/chinmayi_shaligram/Library/Containers/com.microsoft.Word/Data/Library/Application Support/Microsoft/Office/16.0/WebServiceCache/AllUsers/NetBeansProjects/Assignment_1/src/Images/back.jpg")); // NOI18N
-        jLabel2.setText("jLabel2");
+        jLabel4.setBounds(170, 60, 0, 70);
         add(jLabel2);
-        jLabel2.setBounds(-60, -80, 1540, 860);
+        jLabel2.setBounds(170, -330, 1540, 860);
+
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/User_Interface/back.jpg"))); // NOI18N
+        jLabel3.setText("jLabel3");
+        add(jLabel3);
+        jLabel3.setBounds(0, 0, 1080, 600);
+
+        jLabel5.setPreferredSize(new java.awt.Dimension(1400, 800));
+        jLabel5.setRequestFocusEnabled(false);
+        add(jLabel5);
+        jLabel5.setBounds(210, 80, 70, 70);
     }// </editor-fold>//GEN-END:initComponents
 
     private void txt_StreetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_StreetActionPerformed
@@ -136,7 +143,9 @@ public class View_Address extends javax.swing.JPanel {
     private javax.swing.JLabel Lbl_Zip;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JTextField txt_City2;
     private javax.swing.JTextField txt_State;
     private javax.swing.JTextField txt_Street;

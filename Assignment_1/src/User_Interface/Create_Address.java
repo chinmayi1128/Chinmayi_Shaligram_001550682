@@ -44,6 +44,8 @@ public class Create_Address extends javax.swing.JPanel {
         Lbl_Zip = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
 
         setLayout(null);
 
@@ -54,7 +56,7 @@ public class Create_Address extends javax.swing.JPanel {
             }
         });
         add(Btn_Save);
-        Btn_Save.setBounds(280, 430, 75, 29);
+        Btn_Save.setBounds(280, 430, 57, 23);
 
         txt_Street.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(153, 153, 153), new java.awt.Color(153, 153, 153)));
         txt_Street.addActionListener(new java.awt.event.ActionListener() {
@@ -63,7 +65,7 @@ public class Create_Address extends javax.swing.JPanel {
             }
         });
         add(txt_Street);
-        txt_Street.setBounds(340, 190, 111, 20);
+        txt_Street.setBounds(340, 190, 111, 18);
 
         txt_City2.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(153, 153, 153), new java.awt.Color(153, 153, 153)));
         txt_City2.addActionListener(new java.awt.event.ActionListener() {
@@ -72,52 +74,60 @@ public class Create_Address extends javax.swing.JPanel {
             }
         });
         add(txt_City2);
-        txt_City2.setBounds(340, 240, 111, 20);
+        txt_City2.setBounds(340, 240, 111, 18);
 
         txt_State.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(153, 153, 153), new java.awt.Color(153, 153, 153)));
         add(txt_State);
-        txt_State.setBounds(340, 300, 111, 20);
+        txt_State.setBounds(340, 300, 111, 18);
 
         txt_Zip.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(153, 153, 153), new java.awt.Color(153, 153, 153)));
         add(txt_Zip);
-        txt_Zip.setBounds(340, 360, 111, 20);
+        txt_Zip.setBounds(340, 360, 111, 18);
 
         Lbl_Address.setFont(new java.awt.Font("Lucida Grande", 1, 24)); // NOI18N
         Lbl_Address.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Lbl_Address.setText("Address");
         add(Lbl_Address);
-        Lbl_Address.setBounds(180, 100, 366, 30);
+        Lbl_Address.setBounds(180, 100, 366, 32);
 
         Lbl_Street.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
         Lbl_Street.setText("Street");
         add(Lbl_Street);
-        Lbl_Street.setBounds(190, 190, 70, 17);
+        Lbl_Street.setBounds(190, 190, 70, 19);
 
         Lbl_City.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
         Lbl_City.setText("City");
         add(Lbl_City);
-        Lbl_City.setBounds(190, 240, 60, 17);
+        Lbl_City.setBounds(190, 240, 60, 19);
 
         Lbl_State.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
         Lbl_State.setText("State");
         add(Lbl_State);
-        Lbl_State.setBounds(190, 300, 60, 17);
+        Lbl_State.setBounds(190, 300, 60, 19);
 
         Lbl_Zip.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
         Lbl_Zip.setText("ZipCode");
         add(Lbl_Zip);
-        Lbl_Zip.setBounds(190, 360, 90, 17);
+        Lbl_Zip.setBounds(190, 360, 90, 19);
 
-        jLabel1.setIcon(new javax.swing.ImageIcon("/Users/chinmayi_shaligram/Library/Containers/com.microsoft.Word/Data/Library/Application Support/Microsoft/Office/16.0/WebServiceCache/AllUsers/NetBeansProjects/Assignment_1/src/Images/address.jpg")); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\umair\\OneDrive\\Desktop\\AED\\Assignment_1\\src\\Images\\address.jpg")); // NOI18N
         jLabel1.setPreferredSize(new java.awt.Dimension(1400, 800));
         jLabel1.setRequestFocusEnabled(false);
         add(jLabel1);
         jLabel1.setBounds(210, 80, 70, 70);
 
-        jLabel2.setIcon(new javax.swing.ImageIcon("/Users/chinmayi_shaligram/Library/Containers/com.microsoft.Word/Data/Library/Application Support/Microsoft/Office/16.0/WebServiceCache/AllUsers/NetBeansProjects/Assignment_1/src/Images/back.jpg")); // NOI18N
-        jLabel2.setText("jLabel2");
+        jLabel2.setText(" ");
         add(jLabel2);
         jLabel2.setBounds(0, -250, 1170, 1280);
+
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/User_Interface/back.jpg"))); // NOI18N
+        jLabel3.setText("jLabel3");
+        add(jLabel3);
+        jLabel3.setBounds(0, 0, 1080, 600);
+
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/person.png"))); // NOI18N
+        add(jLabel4);
+        jLabel4.setBounds(170, 120, 70, 70);
     }// </editor-fold>//GEN-END:initComponents
 
     private void Btn_SaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_SaveActionPerformed
@@ -149,6 +159,8 @@ public class Create_Address extends javax.swing.JPanel {
     private javax.swing.JLabel Lbl_Zip;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JTextField txt_City2;
     private javax.swing.JTextField txt_State;
     private javax.swing.JTextField txt_Street;

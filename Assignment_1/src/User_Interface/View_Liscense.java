@@ -59,6 +59,7 @@ public class View_Liscense extends javax.swing.JPanel {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
 
         setToolTipText("");
         setLayout(null);
@@ -66,17 +67,17 @@ public class View_Liscense extends javax.swing.JPanel {
         txt_Liscense.setEditable(false);
         txt_Liscense.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(153, 153, 153), new java.awt.Color(153, 153, 153)));
         add(txt_Liscense);
-        txt_Liscense.setBounds(320, 260, 101, 20);
+        txt_Liscense.setBounds(320, 260, 101, 18);
 
         txt_Issue.setEditable(false);
         txt_Issue.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(153, 153, 153), new java.awt.Color(153, 153, 153)));
         add(txt_Issue);
-        txt_Issue.setBounds(320, 300, 101, 20);
+        txt_Issue.setBounds(320, 300, 101, 18);
 
         txt_Expiry.setEditable(false);
         txt_Expiry.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(153, 153, 153), new java.awt.Color(153, 153, 153)));
         add(txt_Expiry);
-        txt_Expiry.setBounds(320, 340, 101, 20);
+        txt_Expiry.setBounds(320, 340, 101, 18);
 
         txt_Blood.setEditable(false);
         txt_Blood.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(153, 153, 153), new java.awt.Color(153, 153, 153)));
@@ -86,25 +87,25 @@ public class View_Liscense extends javax.swing.JPanel {
             }
         });
         add(txt_Blood);
-        txt_Blood.setBounds(320, 380, 101, 20);
+        txt_Blood.setBounds(320, 380, 101, 18);
 
         jLabel1.setFont(new java.awt.Font("Lucida Grande", 1, 24)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Driver's Liscense");
         add(jLabel1);
-        jLabel1.setBounds(160, 170, 317, 30);
+        jLabel1.setBounds(160, 170, 317, 32);
 
         Lbl_Liscense.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
         Lbl_Liscense.setText("Liscense Number ");
         Lbl_Liscense.setToolTipText("");
         add(Lbl_Liscense);
-        Lbl_Liscense.setBounds(150, 260, 120, 17);
+        Lbl_Liscense.setBounds(150, 260, 120, 19);
 
         Lbl_Issue.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
         Lbl_Issue.setText("Issue Date");
         Lbl_Issue.setToolTipText("");
         add(Lbl_Issue);
-        Lbl_Issue.setBounds(150, 300, 80, 17);
+        Lbl_Issue.setBounds(150, 300, 80, 19);
 
         Lbl_Expiry.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
         Lbl_Expiry.setText("Expiry Date");
@@ -116,7 +117,7 @@ public class View_Liscense extends javax.swing.JPanel {
         Lbl_Blood.setText("Blood Group");
         Lbl_Blood.setToolTipText("");
         add(Lbl_Blood);
-        Lbl_Blood.setBounds(150, 390, 90, 17);
+        Lbl_Blood.setBounds(150, 390, 90, 19);
 
         Lbl_img.setText("Photo");
         add(Lbl_img);
@@ -126,15 +127,18 @@ public class View_Liscense extends javax.swing.JPanel {
         jLabel3.setText("Image");
         add(jLabel3);
         jLabel3.setBounds(150, 430, 60, 20);
-
-        jLabel4.setIcon(new javax.swing.ImageIcon("/Users/chinmayi_shaligram/Library/Containers/com.microsoft.Word/Data/Library/Application Support/Microsoft/Office/16.0/WebServiceCache/AllUsers/NetBeansProjects/Assignment_1/src/Images/liscense.png")); // NOI18N
         add(jLabel4);
-        jLabel4.setBounds(130, 160, 72, 50);
+        jLabel4.setBounds(130, 160, 0, 50);
 
-        jLabel2.setIcon(new javax.swing.ImageIcon("/Users/chinmayi_shaligram/Library/Containers/com.microsoft.Word/Data/Library/Application Support/Microsoft/Office/16.0/WebServiceCache/AllUsers/NetBeansProjects/Assignment_1/src/Images/back.jpg")); // NOI18N
-        jLabel2.setText("jLabel2");
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/User_Interface/liscense.png"))); // NOI18N
+        jLabel2.setText(" ");
         add(jLabel2);
-        jLabel2.setBounds(0, -10, 1110, 790);
+        jLabel2.setBounds(140, -210, 1110, 790);
+
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/User_Interface/back.jpg"))); // NOI18N
+        jLabel5.setText("jLabel3");
+        add(jLabel5);
+        jLabel5.setBounds(0, 0, 1080, 600);
     }// </editor-fold>//GEN-END:initComponents
 
     private void txt_BloodActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_BloodActionPerformed
@@ -152,6 +156,7 @@ public class View_Liscense extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JTextField txt_Blood;
     private javax.swing.JTextField txt_Expiry;
     private javax.swing.JTextField txt_Issue;

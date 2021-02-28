@@ -47,8 +47,8 @@ public class Create_Medical extends javax.swing.JPanel {
         jLabel5 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
 
-        setSize(new java.awt.Dimension(1110, 610));
         setLayout(null);
 
         Btn_save.setText("Save");
@@ -58,15 +58,15 @@ public class Create_Medical extends javax.swing.JPanel {
             }
         });
         add(Btn_save);
-        Btn_save.setBounds(210, 390, 75, 29);
+        Btn_save.setBounds(210, 390, 57, 23);
 
         txt_Record.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(153, 153, 153), new java.awt.Color(153, 153, 153)));
         add(txt_Record);
-        txt_Record.setBounds(300, 180, 101, 20);
+        txt_Record.setBounds(300, 180, 101, 18);
 
         txt_BGroup.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(153, 153, 153), new java.awt.Color(153, 153, 153)));
         add(txt_BGroup);
-        txt_BGroup.setBounds(300, 230, 101, 20);
+        txt_BGroup.setBounds(300, 230, 101, 18);
 
         txt_Diabetes.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(153, 153, 153), new java.awt.Color(153, 153, 153)));
         txt_Diabetes.addActionListener(new java.awt.event.ActionListener() {
@@ -75,7 +75,7 @@ public class Create_Medical extends javax.swing.JPanel {
             }
         });
         add(txt_Diabetes);
-        txt_Diabetes.setBounds(300, 270, 101, 20);
+        txt_Diabetes.setBounds(300, 270, 101, 18);
 
         txt_BPressure.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(153, 153, 153), new java.awt.Color(153, 153, 153)));
         txt_BPressure.addActionListener(new java.awt.event.ActionListener() {
@@ -84,51 +84,55 @@ public class Create_Medical extends javax.swing.JPanel {
             }
         });
         add(txt_BPressure);
-        txt_BPressure.setBounds(300, 310, 101, 20);
+        txt_BPressure.setBounds(300, 310, 101, 18);
 
         Lbl_Medical.setFont(new java.awt.Font("Lucida Grande", 1, 24)); // NOI18N
         Lbl_Medical.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Lbl_Medical.setText("Medical Records");
         add(Lbl_Medical);
-        Lbl_Medical.setBounds(150, 100, 317, 30);
+        Lbl_Medical.setBounds(150, 100, 317, 32);
 
         jLabel1.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
         jLabel1.setText("Record Number");
         add(jLabel1);
-        jLabel1.setBounds(130, 180, 107, 17);
+        jLabel1.setBounds(130, 180, 110, 19);
 
         jLabel2.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
         jLabel2.setText("Blood Group");
         add(jLabel2);
-        jLabel2.setBounds(130, 220, 90, 17);
+        jLabel2.setBounds(130, 220, 90, 19);
 
         jLabel3.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
         jLabel3.setText("Diabetes");
         add(jLabel3);
-        jLabel3.setBounds(130, 270, 70, 17);
+        jLabel3.setBounds(130, 270, 70, 19);
 
         jLabel4.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
         jLabel4.setText("Blood Pressure");
         add(jLabel4);
-        jLabel4.setBounds(130, 310, 102, 17);
+        jLabel4.setBounds(130, 310, 110, 19);
 
         txt_Covid.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(153, 153, 153), new java.awt.Color(153, 153, 153)));
         add(txt_Covid);
-        txt_Covid.setBounds(300, 350, 101, 20);
+        txt_Covid.setBounds(300, 350, 101, 18);
 
         jLabel5.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
         jLabel5.setText("Covid");
         add(jLabel5);
-        jLabel5.setBounds(130, 350, 50, 17);
+        jLabel5.setBounds(130, 350, 50, 19);
 
-        jLabel7.setIcon(new javax.swing.ImageIcon("/Users/chinmayi_shaligram/Library/Containers/com.microsoft.Word/Data/Library/Application Support/Microsoft/Office/16.0/WebServiceCache/AllUsers/NetBeansProjects/Assignment_1/src/Images/medical.jpg")); // NOI18N
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/User_Interface/medical.jpg"))); // NOI18N
         add(jLabel7);
-        jLabel7.setBounds(130, 70, 100, 90);
+        jLabel7.setBounds(140, 70, 100, 90);
 
-        jLabel6.setIcon(new javax.swing.ImageIcon("/Users/chinmayi_shaligram/Library/Containers/com.microsoft.Word/Data/Library/Application Support/Microsoft/Office/16.0/WebServiceCache/AllUsers/NetBeansProjects/Assignment_1/src/Images/back.jpg")); // NOI18N
-        jLabel6.setText("jLabel6");
+        jLabel6.setText(" ");
         add(jLabel6);
         jLabel6.setBounds(-5, 0, 1870, 630);
+
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/User_Interface/back.jpg"))); // NOI18N
+        jLabel8.setText("jLabel3");
+        add(jLabel8);
+        jLabel8.setBounds(0, 0, 1080, 600);
     }// </editor-fold>//GEN-END:initComponents
 
     private void Btn_saveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_saveActionPerformed
@@ -163,6 +167,7 @@ public class Create_Medical extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JTextField txt_BGroup;
     private javax.swing.JTextField txt_BPressure;
     private javax.swing.JTextField txt_Covid;

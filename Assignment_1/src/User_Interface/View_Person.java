@@ -52,9 +52,11 @@ public class View_Person extends javax.swing.JPanel {
         Lbl_Phno = new javax.swing.JLabel();
         Lbl_DOB = new javax.swing.JLabel();
         Lbl_Age = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
 
         setLayout(null);
 
@@ -66,7 +68,7 @@ public class View_Person extends javax.swing.JPanel {
             }
         });
         add(Txt_Age);
-        Txt_Age.setBounds(490, 250, 95, 20);
+        Txt_Age.setBounds(490, 250, 95, 18);
 
         Txt_Ht.setEditable(false);
         Txt_Ht.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(153, 153, 153), new java.awt.Color(153, 153, 153)));
@@ -76,7 +78,7 @@ public class View_Person extends javax.swing.JPanel {
             }
         });
         add(Txt_Ht);
-        Txt_Ht.setBounds(490, 300, 95, 20);
+        Txt_Ht.setBounds(490, 300, 95, 18);
 
         Txt_Wt.setEditable(false);
         Txt_Wt.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(153, 153, 153), new java.awt.Color(153, 153, 153)));
@@ -86,17 +88,17 @@ public class View_Person extends javax.swing.JPanel {
             }
         });
         add(Txt_Wt);
-        Txt_Wt.setBounds(490, 350, 95, 20);
+        Txt_Wt.setBounds(490, 350, 95, 18);
 
         Txt_FN.setEditable(false);
         Txt_FN.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(153, 153, 153), new java.awt.Color(153, 153, 153)));
         add(Txt_FN);
-        Txt_FN.setBounds(200, 250, 100, 20);
+        Txt_FN.setBounds(200, 250, 100, 18);
 
         Txt_SSN.setEditable(false);
         Txt_SSN.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(153, 153, 153), new java.awt.Color(153, 153, 153)));
         add(Txt_SSN);
-        Txt_SSN.setBounds(490, 400, 95, 20);
+        Txt_SSN.setBounds(490, 400, 95, 18);
 
         Txt_LN.setEditable(false);
         Txt_LN.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(153, 153, 153), new java.awt.Color(153, 153, 153)));
@@ -106,17 +108,17 @@ public class View_Person extends javax.swing.JPanel {
             }
         });
         add(Txt_LN);
-        Txt_LN.setBounds(200, 300, 100, 20);
+        Txt_LN.setBounds(200, 300, 100, 18);
 
         Lbl_Height.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
         Lbl_Height.setText("Height");
         add(Lbl_Height);
-        Lbl_Height.setBounds(390, 300, 50, 17);
+        Lbl_Height.setBounds(390, 300, 50, 19);
 
         Lbl_Weight.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
         Lbl_Weight.setText("Weight");
         add(Lbl_Weight);
-        Lbl_Weight.setBounds(390, 350, 60, 17);
+        Lbl_Weight.setBounds(390, 350, 60, 19);
 
         Txt_Phno.setEditable(false);
         Txt_Phno.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(153, 153, 153), new java.awt.Color(153, 153, 153)));
@@ -126,56 +128,64 @@ public class View_Person extends javax.swing.JPanel {
             }
         });
         add(Txt_Phno);
-        Txt_Phno.setBounds(200, 350, 100, 20);
+        Txt_Phno.setBounds(200, 350, 100, 18);
 
         Lbl_SSN.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
         Lbl_SSN.setText("SSN");
         add(Lbl_SSN);
-        Lbl_SSN.setBounds(390, 400, 40, 17);
+        Lbl_SSN.setBounds(390, 400, 40, 19);
 
         Txt_DOB.setEditable(false);
         Txt_DOB.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(153, 153, 153), new java.awt.Color(153, 153, 153)));
         add(Txt_DOB);
-        Txt_DOB.setBounds(200, 400, 101, 20);
+        Txt_DOB.setBounds(200, 400, 101, 18);
 
         Lbl_Firstname.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
         Lbl_Firstname.setText("First Name");
         add(Lbl_Firstname);
-        Lbl_Firstname.setBounds(70, 250, 73, 17);
+        Lbl_Firstname.setBounds(70, 250, 80, 19);
 
         Lbl_LastName.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
         Lbl_LastName.setText("Last Name");
         add(Lbl_LastName);
-        Lbl_LastName.setBounds(70, 300, 80, 17);
+        Lbl_LastName.setBounds(70, 300, 80, 19);
 
         Lbl_Phno.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
         Lbl_Phno.setText("Phone Number ");
         add(Lbl_Phno);
-        Lbl_Phno.setBounds(50, 350, 106, 17);
+        Lbl_Phno.setBounds(70, 350, 110, 19);
 
         Lbl_DOB.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
         Lbl_DOB.setText("Date of Birth");
         add(Lbl_DOB);
-        Lbl_DOB.setBounds(60, 400, 100, 20);
+        Lbl_DOB.setBounds(70, 400, 100, 20);
 
         Lbl_Age.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
         Lbl_Age.setText("Age");
         add(Lbl_Age);
-        Lbl_Age.setBounds(390, 250, 50, 17);
+        Lbl_Age.setBounds(390, 250, 50, 19);
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/User_Interface/person.png"))); // NOI18N
+        add(jLabel1);
+        jLabel1.setBounds(220, 110, 80, 70);
 
         jLabel4.setFont(new java.awt.Font("Lucida Grande", 1, 24)); // NOI18N
         jLabel4.setText("Person");
         add(jLabel4);
         jLabel4.setBounds(330, 130, 120, 40);
 
-        jLabel1.setIcon(new javax.swing.ImageIcon("/Users/chinmayi_shaligram/Library/Containers/com.microsoft.Word/Data/Library/Application Support/Microsoft/Office/16.0/WebServiceCache/AllUsers/NetBeansProjects/Assignment_1/src/Images/person.png")); // NOI18N
-        add(jLabel1);
-        jLabel1.setBounds(220, 110, 80, 70);
-
-        jLabel2.setIcon(new javax.swing.ImageIcon("/Users/chinmayi_shaligram/Library/Containers/com.microsoft.Word/Data/Library/Application Support/Microsoft/Office/16.0/WebServiceCache/AllUsers/NetBeansProjects/Assignment_1/src/Images/back.jpg")); // NOI18N
-        jLabel2.setText("jLabel2");
+        jLabel2.setText(" ");
         add(jLabel2);
         jLabel2.setBounds(-10, -50, 1630, 850);
+
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/User_Interface/back.jpg"))); // NOI18N
+        jLabel3.setText("jLabel3");
+        add(jLabel3);
+        jLabel3.setBounds(0, 0, 1080, 600);
+
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/person.png"))); // NOI18N
+        add(jLabel5);
+        jLabel5.setBounds(170, 120, 70, 70);
     }// </editor-fold>//GEN-END:initComponents
 
     private void Txt_AgeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Txt_AgeActionPerformed
@@ -218,7 +228,9 @@ public class View_Person extends javax.swing.JPanel {
     private javax.swing.JTextField Txt_Wt;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     // End of variables declaration//GEN-END:variables
 
     private void displayperson() {
