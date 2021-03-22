@@ -1,0 +1,54 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package info5100.university.example.Employer;
+
+import info5100.university.example.Persona.Faculty.*;
+import info5100.university.example.Persona.*;
+import info5100.university.example.Department.Department;
+import java.util.ArrayList;
+
+/**
+ *
+ * @author kal bugrara
+ */
+public class EmployerDirectory {
+
+    Department department;
+    ArrayList<EmployerProfile> employerlist;
+
+    public EmployerDirectory(Department d) {
+
+        department = d;
+        employerlist = new ArrayList();
+
+    }
+
+    public EmployerProfile newEmployerProfile(String n, String employerID) {
+
+        EmployerProfile sp = new EmployerProfile(n, employerID);
+        employerlist.add(sp);
+        return sp;
+    }
+
+    public EmployerProfile findEmployer(String id) {
+
+        for (EmployerProfile ep : employerlist) {
+            if (ep.getEmployerID().equalsIgnoreCase(id)) {
+                
+                return ep;
+            }
+        }
+            return null; //not found after going through the whole list
+         }
+    public void showEmployerProfile()
+    {
+        for (EmployerProfile ep : employerlist)
+        {
+            System.out.println("Employer Name : "+ ep.getName());
+            System.out.println("Employer ID: " + ep.getEmployerID());
+        }
+    }
+}
