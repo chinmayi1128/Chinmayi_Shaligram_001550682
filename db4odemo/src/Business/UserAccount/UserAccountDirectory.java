@@ -6,6 +6,7 @@ package Business.UserAccount;
 
 import Business.Employee.Employee;
 import Business.Role.Role;
+import Business.Role.SystemAdminRole;
 import java.util.ArrayList;
 
 /**
@@ -13,7 +14,7 @@ import java.util.ArrayList;
  * @author raunak
  */
 public class UserAccountDirectory {
-    
+   //private RestaurantDirectory resDir;
     private ArrayList<UserAccount> userAccountList;
 
     public UserAccountDirectory() {
@@ -32,14 +33,26 @@ public class UserAccountDirectory {
         return null;
     }
     
-    public UserAccount createUserAccount(String username, String password, Employee employee, Role role){
+    public UserAccount createUserAccount(String name,String username, String password, Employee employee, Role role){
         UserAccount userAccount = new UserAccount();
+        userAccount.setName(name);
         userAccount.setUsername(username);
         userAccount.setPassword(password);
         userAccount.setEmployee(employee);
         userAccount.setRole(role);
-        userAccountList.add(userAccount);
+        userAccountList.add(userAccount);   
         return userAccount;
+    }
+    
+    public void deleteUserAccount(UserAccount user){
+        userAccountList.remove(user);
+    }
+    
+    public void updateUserAccount(UserAccount user,String name,String username, String password){
+       
+        user.setName(name);
+        user.setUsername(username);
+        user.setPassword(password);
     }
     
     public boolean checkIfUsernameIsUnique(String username){
