@@ -114,32 +114,32 @@ public class DeliveryManWorkAreaJPanel extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(workRequestJTable);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 70, 640, 140));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 190, 640, 140));
 
+        processJButton.setBackground(new java.awt.Color(0, 102, 102));
         processJButton.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        processJButton.setForeground(new java.awt.Color(255, 255, 255));
         processJButton.setText("Process");
         processJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 processJButtonActionPerformed(evt);
             }
         });
-        add(processJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 240, 170, -1));
+        add(processJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 370, 170, -1));
 
+        refreshJButton.setBackground(new java.awt.Color(0, 51, 51));
         refreshJButton.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        refreshJButton.setForeground(new java.awt.Color(255, 255, 255));
         refreshJButton.setText("Refresh");
         refreshJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 refreshJButtonActionPerformed(evt);
             }
         });
-        add(refreshJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 240, 150, -1));
+        add(refreshJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 370, 150, -1));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 51, 51));
         jLabel1.setText("Order Detail");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 20, -1, -1));
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 60, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void processJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_processJButtonActionPerformed

@@ -116,8 +116,8 @@ public class AssignDeliveryMan extends javax.swing.JPanel {
 
         add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 90, 404, 91));
 
-        AssignOrderBtn.setBackground(new java.awt.Color(0, 0, 0));
-        AssignOrderBtn.setForeground(new java.awt.Color(255, 255, 255));
+        AssignOrderBtn.setBackground(new java.awt.Color(0, 102, 102));
+        AssignOrderBtn.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         AssignOrderBtn.setText("Assign Order");
         AssignOrderBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -126,8 +126,8 @@ public class AssignDeliveryMan extends javax.swing.JPanel {
         });
         add(AssignOrderBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 210, 210, -1));
 
-        BackBtn.setBackground(new java.awt.Color(0, 0, 0));
-        BackBtn.setForeground(new java.awt.Color(255, 255, 255));
+        BackBtn.setBackground(new java.awt.Color(0, 51, 51));
+        BackBtn.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         BackBtn.setText("<< Back");
         BackBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

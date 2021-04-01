@@ -62,6 +62,8 @@ public class ManageRestaurants extends javax.swing.JPanel {
         deleteBtn = new javax.swing.JButton();
         ConfirmBtn = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(153, 153, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -94,30 +96,28 @@ public class ManageRestaurants extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(networkJTable);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, 500, 120));
-        add(nameJTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 240, 144, -1));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 130, 500, 120));
+        add(nameJTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 350, 144, -1));
 
-        backJButton.setBackground(new java.awt.Color(0, 0, 0));
+        backJButton.setBackground(new java.awt.Color(0, 102, 102));
         backJButton.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        backJButton.setForeground(new java.awt.Color(255, 255, 255));
         backJButton.setText("<< Back");
         backJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 backJButtonActionPerformed(evt);
             }
         });
-        add(backJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 440, -1, -1));
+        add(backJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 560, -1, -1));
 
-        submitJButton.setBackground(new java.awt.Color(0, 0, 0));
+        submitJButton.setBackground(new java.awt.Color(0, 102, 102));
         submitJButton.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        submitJButton.setForeground(new java.awt.Color(255, 255, 255));
         submitJButton.setText("Submit");
         submitJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 submitJButtonActionPerformed(evt);
             }
         });
-        add(submitJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 390, 150, -1));
+        add(submitJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 500, 150, -1));
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(131, 585, -1, -1));
@@ -125,58 +125,69 @@ public class ManageRestaurants extends javax.swing.JPanel {
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 102, 102));
         jLabel3.setText("Name");
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 240, -1, -1));
-        add(uNameTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 290, 144, -1));
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 350, -1, 30));
+
+        uNameTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                uNameTextFieldActionPerformed(evt);
+            }
+        });
+        add(uNameTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 400, 144, -1));
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(0, 102, 102));
         jLabel4.setText("Password");
-        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 340, -1, -1));
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 440, -1, -1));
 
         PasswordField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 PasswordFieldActionPerformed(evt);
             }
         });
-        add(PasswordField, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 340, 144, -1));
+        add(PasswordField, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 450, 144, -1));
 
-        updateBtn.setBackground(new java.awt.Color(0, 0, 0));
+        updateBtn.setBackground(new java.awt.Color(0, 102, 102));
         updateBtn.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        updateBtn.setForeground(new java.awt.Color(255, 255, 255));
         updateBtn.setText("Update");
         updateBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 updateBtnActionPerformed(evt);
             }
         });
-        add(updateBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 180, 120, -1));
+        add(updateBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 280, 120, -1));
 
-        deleteBtn.setBackground(new java.awt.Color(0, 0, 0));
+        deleteBtn.setBackground(new java.awt.Color(0, 102, 102));
         deleteBtn.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        deleteBtn.setForeground(new java.awt.Color(255, 255, 255));
         deleteBtn.setText("Delete");
         deleteBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 deleteBtnActionPerformed(evt);
             }
         });
-        add(deleteBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 180, 130, -1));
+        add(deleteBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 280, 130, -1));
 
-        ConfirmBtn.setBackground(new java.awt.Color(0, 0, 0));
+        ConfirmBtn.setBackground(new java.awt.Color(0, 102, 102));
         ConfirmBtn.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        ConfirmBtn.setForeground(new java.awt.Color(255, 255, 255));
         ConfirmBtn.setText("Save");
         ConfirmBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ConfirmBtnActionPerformed(evt);
             }
         });
-        add(ConfirmBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(415, 180, 120, -1));
+        add(ConfirmBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 280, 120, -1));
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(0, 102, 102));
         jLabel5.setText("Username");
-        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 290, -1, 20));
+        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 400, -1, 20));
+
+        jLabel1.setBackground(new java.awt.Color(0, 102, 102));
+        jLabel1.setFont(new java.awt.Font("Lucida Grande", 1, 18)); // NOI18N
+        jLabel1.setText("Manage Restaurants");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 60, -1, -1));
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/restaurant1.png"))); // NOI18N
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(555, 30, 100, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void backJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backJButtonActionPerformed
@@ -263,6 +274,10 @@ public class ManageRestaurants extends javax.swing.JPanel {
         
     }//GEN-LAST:event_ConfirmBtnActionPerformed
 
+    private void uNameTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_uNameTextFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_uNameTextFieldActionPerformed
+
     private void populateNetworkTable() {
         DefaultTableModel model = (DefaultTableModel) networkJTable.getModel();
         
@@ -288,6 +303,8 @@ public class ManageRestaurants extends javax.swing.JPanel {
     private javax.swing.JPasswordField PasswordField;
     private javax.swing.JButton backJButton;
     private javax.swing.JButton deleteBtn;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;

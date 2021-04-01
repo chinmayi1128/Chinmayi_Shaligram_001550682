@@ -106,8 +106,7 @@ public class ManageInfo extends javax.swing.JPanel {
         });
         add(numTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 130, 150, -1));
 
-        backBtn.setBackground(new java.awt.Color(0, 0, 0));
-        backBtn.setForeground(new java.awt.Color(255, 255, 255));
+        backBtn.setBackground(new java.awt.Color(0, 102, 102));
         backBtn.setText("<<<Back");
         backBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -116,8 +115,7 @@ public class ManageInfo extends javax.swing.JPanel {
         });
         add(backBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 300, -1, -1));
 
-        SaveBtn.setBackground(new java.awt.Color(0, 0, 0));
-        SaveBtn.setForeground(new java.awt.Color(255, 255, 255));
+        SaveBtn.setBackground(new java.awt.Color(0, 102, 102));
         SaveBtn.setText("Save");
         SaveBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -126,8 +124,7 @@ public class ManageInfo extends javax.swing.JPanel {
         });
         add(SaveBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 240, 90, -1));
 
-        UpdateBtn.setBackground(new java.awt.Color(0, 0, 0));
-        UpdateBtn.setForeground(new java.awt.Color(255, 255, 255));
+        UpdateBtn.setBackground(new java.awt.Color(0, 102, 102));
         UpdateBtn.setText("Update");
         UpdateBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

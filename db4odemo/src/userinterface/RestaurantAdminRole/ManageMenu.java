@@ -139,9 +139,8 @@ public class ManageMenu extends javax.swing.JPanel {
         });
         add(deleteBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 200, 160, -1));
 
-        backBtn.setBackground(new java.awt.Color(0, 0, 0));
+        backBtn.setBackground(new java.awt.Color(0, 102, 102));
         backBtn.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        backBtn.setForeground(new java.awt.Color(255, 255, 255));
         backBtn.setText("<<<Back");
         backBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -150,9 +149,8 @@ public class ManageMenu extends javax.swing.JPanel {
         });
         add(backBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 430, -1, -1));
 
-        addDishBtn.setBackground(new java.awt.Color(0, 0, 0));
+        addDishBtn.setBackground(new java.awt.Color(0, 102, 102));
         addDishBtn.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        addDishBtn.setForeground(new java.awt.Color(255, 255, 255));
         addDishBtn.setText("Add Dish");
         addDishBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

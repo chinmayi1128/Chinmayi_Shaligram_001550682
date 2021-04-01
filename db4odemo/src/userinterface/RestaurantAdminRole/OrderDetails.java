@@ -101,9 +101,8 @@ public class OrderDetails extends javax.swing.JPanel {
 
         add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 100, 550, 150));
 
-        BackBtn.setBackground(new java.awt.Color(0, 0, 0));
+        BackBtn.setBackground(new java.awt.Color(0, 102, 102));
         BackBtn.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        BackBtn.setForeground(new java.awt.Color(255, 255, 255));
         BackBtn.setText("<< Back");
         BackBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -117,9 +116,8 @@ public class OrderDetails extends javax.swing.JPanel {
         jLabel1.setText("Order ID:");
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 60, -1, -1));
 
-        statusBtn.setBackground(new java.awt.Color(0, 0, 0));
+        statusBtn.setBackground(new java.awt.Color(0, 102, 102));
         statusBtn.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        statusBtn.setForeground(new java.awt.Color(255, 255, 255));
         statusBtn.setText("Change Status to Ready to Deliver");
         statusBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

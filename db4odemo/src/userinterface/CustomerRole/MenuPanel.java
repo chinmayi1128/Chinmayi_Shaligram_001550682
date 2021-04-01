@@ -100,9 +100,8 @@ public class MenuPanel extends javax.swing.JPanel {
         setForeground(new java.awt.Color(255, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        cardBtn.setBackground(new java.awt.Color(0, 0, 0));
+        cardBtn.setBackground(new java.awt.Color(0, 102, 102));
         cardBtn.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        cardBtn.setForeground(new java.awt.Color(255, 255, 255));
         cardBtn.setText("Add to Cart");
         cardBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -111,9 +110,8 @@ public class MenuPanel extends javax.swing.JPanel {
         });
         add(cardBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(305, 260, 170, -1));
 
-        backJButton.setBackground(new java.awt.Color(0, 0, 0));
+        backJButton.setBackground(new java.awt.Color(0, 102, 102));
         backJButton.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        backJButton.setForeground(new java.awt.Color(255, 255, 255));
         backJButton.setText("<<Back");
         backJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -192,9 +190,8 @@ public class MenuPanel extends javax.swing.JPanel {
 
         add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 130, -1, 100));
 
-        orderBtn1.setBackground(new java.awt.Color(0, 0, 0));
+        orderBtn1.setBackground(new java.awt.Color(0, 102, 102));
         orderBtn1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        orderBtn1.setForeground(new java.awt.Color(255, 255, 255));
         orderBtn1.setText("Order");
         orderBtn1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -203,9 +200,8 @@ public class MenuPanel extends javax.swing.JPanel {
         });
         add(orderBtn1, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 490, -1, -1));
 
-        RemoveBtn.setBackground(new java.awt.Color(0, 0, 0));
+        RemoveBtn.setBackground(new java.awt.Color(0, 102, 102));
         RemoveBtn.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        RemoveBtn.setForeground(new java.awt.Color(255, 255, 255));
         RemoveBtn.setText("Remove From Cart");
         RemoveBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
