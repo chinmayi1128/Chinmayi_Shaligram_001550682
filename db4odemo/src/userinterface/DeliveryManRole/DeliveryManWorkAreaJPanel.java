@@ -83,7 +83,7 @@ public class DeliveryManWorkAreaJPanel extends javax.swing.JPanel {
         refreshJButton = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
-        setBackground(new java.awt.Color(0, 102, 102));
+        setBackground(new java.awt.Color(153, 153, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         workRequestJTable.setModel(new javax.swing.table.DefaultTableModel(
@@ -137,7 +137,7 @@ public class DeliveryManWorkAreaJPanel extends javax.swing.JPanel {
         add(refreshJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 240, 150, -1));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setForeground(new java.awt.Color(0, 51, 51));
         jLabel1.setText("Order Detail");
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 20, -1, -1));
     }// </editor-fold>//GEN-END:initComponents

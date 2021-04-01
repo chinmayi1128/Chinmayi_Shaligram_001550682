@@ -96,7 +96,7 @@ public class MenuPanel extends javax.swing.JPanel {
         addressTxt = new javax.swing.JTextField();
         enterpriseLabel1 = new javax.swing.JLabel();
 
-        setBackground(new java.awt.Color(0, 102, 102));
+        setBackground(new java.awt.Color(153, 153, 255));
         setForeground(new java.awt.Color(255, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -123,12 +123,12 @@ public class MenuPanel extends javax.swing.JPanel {
         add(backJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 530, -1, -1));
 
         valueLabel.setFont(new java.awt.Font("Lucida Grande", 1, 18)); // NOI18N
-        valueLabel.setForeground(new java.awt.Color(255, 255, 255));
+        valueLabel.setForeground(new java.awt.Color(0, 51, 51));
         valueLabel.setText("<value>");
         add(valueLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 70, 130, -1));
 
         enterpriseLabel.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        enterpriseLabel.setForeground(new java.awt.Color(255, 255, 255));
+        enterpriseLabel.setForeground(new java.awt.Color(0, 51, 51));
         enterpriseLabel.setText("Address:");
         add(enterpriseLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 490, 90, 30));
 
@@ -216,7 +216,7 @@ public class MenuPanel extends javax.swing.JPanel {
         add(addressTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 490, 170, -1));
 
         enterpriseLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        enterpriseLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        enterpriseLabel1.setForeground(new java.awt.Color(0, 51, 51));
         enterpriseLabel1.setText("Order Here:");
         add(enterpriseLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 70, 120, 30));
     }// </editor-fold>//GEN-END:initComponents

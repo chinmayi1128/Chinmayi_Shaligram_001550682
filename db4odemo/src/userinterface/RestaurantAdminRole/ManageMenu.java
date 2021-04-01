@@ -58,11 +58,11 @@ public class ManageMenu extends javax.swing.JPanel {
         backBtn = new javax.swing.JButton();
         addDishBtn = new javax.swing.JButton();
 
-        setBackground(new java.awt.Color(0, 102, 102));
+        setBackground(new java.awt.Color(153, 153, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setForeground(new java.awt.Color(0, 102, 102));
         jLabel1.setText("Description");
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 330, -1, -1));
 
@@ -73,6 +73,7 @@ public class ManageMenu extends javax.swing.JPanel {
         });
         add(amtTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 380, 160, -1));
 
+        MenuTable.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
         MenuTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null},
@@ -104,7 +105,7 @@ public class ManageMenu extends javax.swing.JPanel {
         add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 830, 100));
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setForeground(new java.awt.Color(0, 102, 102));
         jLabel2.setText("Item Name");
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 270, -1, -1));
 
@@ -116,7 +117,7 @@ public class ManageMenu extends javax.swing.JPanel {
         add(dishNameTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 270, 160, -1));
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setForeground(new java.awt.Color(0, 102, 102));
         jLabel3.setText("Amount");
         add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 380, -1, -1));
 

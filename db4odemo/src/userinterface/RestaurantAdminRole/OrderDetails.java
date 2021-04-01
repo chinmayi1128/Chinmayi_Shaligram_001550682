@@ -68,7 +68,7 @@ public class OrderDetails extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         statusBtn = new javax.swing.JButton();
 
-        setBackground(new java.awt.Color(0, 102, 102));
+        setBackground(new java.awt.Color(153, 153, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         orderTable.setModel(new javax.swing.table.DefaultTableModel(
@@ -113,7 +113,7 @@ public class OrderDetails extends javax.swing.JPanel {
         add(BackBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 340, -1, -1));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setForeground(new java.awt.Color(0, 102, 102));
         jLabel1.setText("Order ID:");
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 60, -1, -1));
 

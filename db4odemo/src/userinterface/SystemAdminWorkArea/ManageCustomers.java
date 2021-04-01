@@ -77,7 +77,7 @@ public class ManageCustomers extends javax.swing.JPanel {
         ConfirmBtn = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
 
-        setBackground(new java.awt.Color(0, 102, 102));
+        setBackground(new java.awt.Color(153, 153, 255));
 
         networkJTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -129,7 +129,7 @@ public class ManageCustomers extends javax.swing.JPanel {
 
         jLabel3.setBackground(new java.awt.Color(0, 0, 0));
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setForeground(new java.awt.Color(0, 102, 102));
         jLabel3.setText("Name");
 
         uNameTextField.addActionListener(new java.awt.event.ActionListener() {
@@ -140,7 +140,7 @@ public class ManageCustomers extends javax.swing.JPanel {
 
         jLabel4.setBackground(new java.awt.Color(0, 0, 0));
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setForeground(new java.awt.Color(0, 102, 102));
         jLabel4.setText("Password");
 
         PasswordField.addActionListener(new java.awt.event.ActionListener() {
@@ -181,7 +181,7 @@ public class ManageCustomers extends javax.swing.JPanel {
 
         jLabel5.setBackground(new java.awt.Color(0, 0, 0));
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setForeground(new java.awt.Color(0, 102, 102));
         jLabel5.setText("Username");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);

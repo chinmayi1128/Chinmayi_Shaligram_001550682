@@ -42,7 +42,7 @@ public class ProcessWorkRequestJPanel extends javax.swing.JPanel {
         statusJTextField = new javax.swing.JTextField();
         backJButton = new javax.swing.JButton();
 
-        setBackground(new java.awt.Color(0, 102, 102));
+        setBackground(new java.awt.Color(153, 153, 255));
 
         submitJButton.setBackground(new java.awt.Color(0, 0, 0));
         submitJButton.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
@@ -55,7 +55,7 @@ public class ProcessWorkRequestJPanel extends javax.swing.JPanel {
         });
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setForeground(new java.awt.Color(0, 51, 51));
         jLabel1.setText("Status");
 
         backJButton.setBackground(new java.awt.Color(0, 0, 0));

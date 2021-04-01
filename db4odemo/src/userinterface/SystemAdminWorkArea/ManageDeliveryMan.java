@@ -60,7 +60,7 @@ public class ManageDeliveryMan extends javax.swing.JPanel {
         PasswordField = new javax.swing.JPasswordField();
         jButton1 = new javax.swing.JButton();
 
-        setBackground(new java.awt.Color(0, 102, 102));
+        setBackground(new java.awt.Color(153, 153, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         updateBtn.setBackground(new java.awt.Color(0, 0, 0));
@@ -127,7 +127,7 @@ public class ManageDeliveryMan extends javax.swing.JPanel {
         add(ConfirmBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 160, 110, -1));
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setForeground(new java.awt.Color(0, 102, 102));
         jLabel5.setText("Username");
         add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 250, -1, 20));
         add(nameJTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 210, 144, -1));
@@ -155,15 +155,15 @@ public class ManageDeliveryMan extends javax.swing.JPanel {
         add(submitJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 340, 150, -1));
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setForeground(new java.awt.Color(0, 102, 102));
         jLabel3.setText("Name");
         add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 210, -1, -1));
         add(uNameTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 250, 144, -1));
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setForeground(new java.awt.Color(0, 102, 102));
         jLabel4.setText("Password");
-        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 300, -1, -1));
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 290, -1, -1));
 
         PasswordField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

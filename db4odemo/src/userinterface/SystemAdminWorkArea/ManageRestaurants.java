@@ -63,7 +63,7 @@ public class ManageRestaurants extends javax.swing.JPanel {
         ConfirmBtn = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
 
-        setBackground(new java.awt.Color(0, 102, 102));
+        setBackground(new java.awt.Color(153, 153, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         networkJTable.setModel(new javax.swing.table.DefaultTableModel(
@@ -123,13 +123,13 @@ public class ManageRestaurants extends javax.swing.JPanel {
         add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(131, 585, -1, -1));
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setForeground(new java.awt.Color(0, 102, 102));
         jLabel3.setText("Name");
         add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 240, -1, -1));
         add(uNameTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 290, 144, -1));
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setForeground(new java.awt.Color(0, 102, 102));
         jLabel4.setText("Password");
         add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 340, -1, -1));
 
@@ -174,7 +174,7 @@ public class ManageRestaurants extends javax.swing.JPanel {
         add(ConfirmBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(415, 180, 120, -1));
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setForeground(new java.awt.Color(0, 102, 102));
         jLabel5.setText("Username");
         add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 290, -1, 20));
     }// </editor-fold>//GEN-END:initComponents
