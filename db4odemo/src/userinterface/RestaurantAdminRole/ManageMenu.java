@@ -130,7 +130,7 @@ public class ManageMenu extends javax.swing.JPanel {
         });
         add(descTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 330, 160, -1));
 
-        deleteBtn.setBackground(new java.awt.Color(0, 0, 0));
+        deleteBtn.setBackground(new java.awt.Color(0, 102, 102));
         deleteBtn.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         deleteBtn.setText("Delete");
         deleteBtn.addActionListener(new java.awt.event.ActionListener() {
