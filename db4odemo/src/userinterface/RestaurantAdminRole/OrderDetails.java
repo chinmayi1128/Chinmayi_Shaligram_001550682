@@ -140,7 +140,10 @@ public class OrderDetails extends javax.swing.JPanel {
         for(Customer cust:system.getCustomerDirectory().getCustList()){
             if(order.getCustomerName().equals(cust.getUserName())){
                 for(Order order : cust.getOrderList()){
-                    order.setStatus("Ready to Deliver");
+                    if(order.getOrder_id().equals(this.order.getOrder_id())){
+                        order.setStatus("Ready to Deliver");
+                    }
+                    
                 }
             }
         }

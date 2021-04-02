@@ -45,6 +45,8 @@ public class AdminWorkAreaJPanel extends javax.swing.JPanel {
         manageOrders = new javax.swing.JButton();
         enterpriseLabel = new javax.swing.JLabel();
         valueLabel = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(153, 153, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -96,6 +98,13 @@ public class AdminWorkAreaJPanel extends javax.swing.JPanel {
         valueLabel.setForeground(new java.awt.Color(0, 102, 102));
         valueLabel.setText("<value>");
         add(valueLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 90, 160, -1));
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/ezgif.com-gif-maker.gif"))); // NOI18N
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 280, 380, -1));
+
+        jLabel3.setFont(new java.awt.Font("Lucida Grande", 1, 18)); // NOI18N
+        jLabel3.setText("So, What is your scrumptious savory?");
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 630, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void manageRestoInfoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageRestoInfoActionPerformed
@@ -126,6 +135,8 @@ public class AdminWorkAreaJPanel extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel enterpriseLabel;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JButton manageMenu;
     private javax.swing.JButton manageOrders;
     private javax.swing.JButton manageRestoInfo;

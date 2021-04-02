@@ -4,6 +4,8 @@
  */
 package userinterface.DeliveryManRole;
 
+import Business.Customer.Customer;
+import Business.EcoSystem;
 import Business.Order.Order;
 import java.awt.CardLayout;
 import java.awt.Component;
@@ -20,13 +22,15 @@ public class ProcessWorkRequestJPanel extends javax.swing.JPanel {
 
     JPanel userProcessContainer;
     Order order;
+    EcoSystem system;
     /**
      * Creates new form ProcessWorkRequestJPanel
      */
-    public ProcessWorkRequestJPanel(JPanel userProcessContainer, Order order) {
+    public ProcessWorkRequestJPanel(JPanel userProcessContainer, Order order,EcoSystem system) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.order = order;
+        this.system = system;
     }
 
     /**
@@ -110,7 +114,33 @@ public class ProcessWorkRequestJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_backJButtonActionPerformed
 
     private void submitJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitJButtonActionPerformed
-        order.setStatus(statusJTextField.getText());
+//        order.setStatus(statusJTextField.getText());
+        String status=statusJTextField.getText();
+        try {
+             if(status==null || status.isEmpty()){
+                throw new Exception(" Status field is Empty");
+             }        
+        } catch(Exception e){
+            JOptionPane.showMessageDialog(null, " Status is Empty");
+            return;
+        }
+        order.setStatus(status);
+         for(Customer cust:system.getCustomerDirectory().getCustList()){
+            if(order.getCustomerName().equals(cust.getUserName())){
+                for(Order order : cust.getOrderList()){
+                    System.out.println("hello :" +order.getStatus()+order.getOrder_id());
+                    if(order.getOrder_id().equals(this.order.getOrder_id())){
+                        order.setStatus(status);
+                        System.out.println("hello :" +order.getStatus()+order.getOrder_id());
+                    }
+                }
+            }
+        }
+         statusJTextField.setText("");
+         userProcessContainer.remove(this);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.previous(userProcessContainer);
+        
         JOptionPane.showMessageDialog(null,"Your status has been updated.","Thank You",JOptionPane.WARNING_MESSAGE);
     }//GEN-LAST:event_submitJButtonActionPerformed
 
