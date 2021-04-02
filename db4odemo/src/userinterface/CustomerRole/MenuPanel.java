@@ -259,6 +259,7 @@ public class MenuPanel extends javax.swing.JPanel {
                 cust.addOrder(restro.getName(), userAccount.getUsername(), null, items, String.valueOf(sum) , address);
             }
         }
+        JOptionPane.showMessageDialog(null,"Your Order is placed","Thank You",JOptionPane.WARNING_MESSAGE);
     }//GEN-LAST:event_orderBtn1ActionPerformed
 
     private void RemoveBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RemoveBtnActionPerformed

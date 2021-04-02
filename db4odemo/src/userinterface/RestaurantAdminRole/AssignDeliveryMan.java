@@ -147,10 +147,10 @@ public class AssignDeliveryMan extends javax.swing.JPanel {
             
             DeliveryMan deliveryMan  = (DeliveryMan)DeliveryManJTable.getValueAt(selectedRow, 0);   
             deliveryMan.getOrderList().add(order);
-            order.setStatus("Assign to Deliveryman");
-            
+            order.setStatus("Assign to Deliveryman"); 
             
         }
+        JOptionPane.showMessageDialog(null,"Delivery Man Assigned.","Warning",JOptionPane.WARNING_MESSAGE);
     }//GEN-LAST:event_AssignOrderBtnActionPerformed
 
     private void BackBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackBtnActionPerformed

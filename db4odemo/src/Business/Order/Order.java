@@ -28,6 +28,17 @@ private String order_id;
     private ArrayList<Dishes> Order;
     private String cost;
     private String status;
+    private String feedback;
+
+    public String getFeedback() {
+        return feedback;
+    }
+
+    public void setFeedback(String feedback) {
+        this.feedback = feedback;
+    }
+    
+    
 
     public String getStatus() {
         return status;

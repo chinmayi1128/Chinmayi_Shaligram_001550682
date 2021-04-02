@@ -130,7 +130,6 @@ public class ManageMenu extends javax.swing.JPanel {
 
         deleteBtn.setBackground(new java.awt.Color(0, 0, 0));
         deleteBtn.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        deleteBtn.setForeground(new java.awt.Color(255, 255, 255));
         deleteBtn.setText("Delete");
         deleteBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -194,7 +193,6 @@ public class ManageMenu extends javax.swing.JPanel {
             int selectionButton = JOptionPane.YES_NO_OPTION;
             int selectionResult = JOptionPane.showConfirmDialog(null, "Are you sure to delete??","Warning",selectionButton);
             if(selectionResult == JOptionPane.YES_OPTION){
-                
                 for(Restaurant restro:system.getRestaurantDirectory().getRestaurantList()){
                     if(restro.getAdminUName().equals(account.getUsername())){
                         system.getRestaurantDirectory().DeleteDishes(restro, menu);

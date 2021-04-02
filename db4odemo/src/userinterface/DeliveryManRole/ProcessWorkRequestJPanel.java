@@ -7,6 +7,7 @@ package userinterface.DeliveryManRole;
 import Business.Order.Order;
 import java.awt.CardLayout;
 import java.awt.Component;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 /**
@@ -110,6 +111,7 @@ public class ProcessWorkRequestJPanel extends javax.swing.JPanel {
 
     private void submitJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitJButtonActionPerformed
         order.setStatus(statusJTextField.getText());
+        JOptionPane.showMessageDialog(null,"Your status has been updated.","Thank You",JOptionPane.WARNING_MESSAGE);
     }//GEN-LAST:event_submitJButtonActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

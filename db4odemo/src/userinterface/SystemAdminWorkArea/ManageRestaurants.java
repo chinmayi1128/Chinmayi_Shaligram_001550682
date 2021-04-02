@@ -16,6 +16,7 @@ import java.awt.Component;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
+import java.util.regex.Pattern;
 
 /**
  *
@@ -107,17 +108,17 @@ public class ManageRestaurants extends javax.swing.JPanel {
                 backJButtonActionPerformed(evt);
             }
         });
-        add(backJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 560, -1, -1));
+        add(backJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 560, -1, -1));
 
         submitJButton.setBackground(new java.awt.Color(0, 102, 102));
         submitJButton.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        submitJButton.setText("Submit");
+        submitJButton.setText("Add New Restaurant");
         submitJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 submitJButtonActionPerformed(evt);
             }
         });
-        add(submitJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 500, 150, -1));
+        add(submitJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 500, 250, 30));
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(131, 585, -1, -1));
@@ -202,15 +203,58 @@ public class ManageRestaurants extends javax.swing.JPanel {
 
     private void submitJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitJButtonActionPerformed
 
-        String name = nameJTextField.getText();
+           String name = nameJTextField.getText();
         String uname=uNameTextField.getText();
         String password=PasswordField.getText();
+        try {
+             if(name==null || name.isEmpty()){
+                throw new NullPointerException(" Name field is Empty");
+            }else if(name.length()<5 || Pattern.matches("^[A-Za-z]+$", name)==false){
+                throw new Exception("Please enter valid  Name");
+            }
+        } catch(NullPointerException e){
+            JOptionPane.showMessageDialog(null, " Name is Empty");
+            return;
+        }catch (Exception e){
+            JOptionPane.showMessageDialog(null, "  Name is invalid");
+            return;
+        }
+        try {
+             if(uname==null || uname.isEmpty()){
+                throw new NullPointerException("User Name field is Empty");
+            }else if(uname.length()<5){
+                throw new Exception("Please enter valid User Name");
+            }
+        } catch(NullPointerException e){
+            JOptionPane.showMessageDialog(null, "User Name is Empty");
+            return;
+        }catch (Exception e){
+            JOptionPane.showMessageDialog(null, " User Name is invalid");
+            return;
+        }
+         try {
+            if(password==null || password.isEmpty()){
+                throw new NullPointerException("Pwd field is Empty");
+            }else if(Pattern.matches("^(?=(.*[a-z]){1,})(?=(.*[\\d]){1,})(?=(.*[\\W]){1,})(?!.*\\s).{5,30}$", password)==false){
+                throw new Exception("Invalid Password");
+            }
+        }  catch(NullPointerException e){
+             JOptionPane.showMessageDialog(null, "Password is Empty");
+             return;
+        }catch (Exception e) {
+             JOptionPane.showMessageDialog(null, "Password is of invalid pattern");
+             return;
+        }
+        if (system.getUserAccountDirectory().checkIfUsernameIsUnique(uname)==false) {
+            JOptionPane.showMessageDialog(null,"  User Name already exists ");
+        }else{
         UserAccount ua1 =system.getUserAccountDirectory().createUserAccount(name,uname,password, null, new AdminRole());
         Restaurant restro= system.getRestaurantDirectory().createRestaurantInfo(uname);
         populateNetworkTable();
         nameJTextField.setText("");
         uNameTextField.setText("");
         PasswordField.setText("");
+        }
     }//GEN-LAST:event_submitJButtonActionPerformed
 
     private void PasswordFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PasswordFieldActionPerformed
