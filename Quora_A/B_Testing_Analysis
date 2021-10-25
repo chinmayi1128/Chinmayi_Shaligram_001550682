@@ -1,0 +1,3520 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "name": "Untitled0.ipynb",
+      "provenance": [],
+      "collapsed_sections": [],
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/chinmayi1128/Chinmayi_Shaligram_001550682/blob/main/Quora_A/B_Testing_Analysis\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "DgodkPF1M82T"
+      },
+      "source": [
+        "# Quora Challenge"
+      ],
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "H7hWTtGsOK_c"
+      },
+      "source": [
+        "import pandas as pd\n",
+        "t1_df = pd.read_csv('/t1_user_active_min.csv')\n",
+        "line_count = t1_df.shape[0]\n",
+        "t1_filtered = t1_df[t1_df['active_mins'] <= 1440]\n",
+        "filtered_lines = t1_filtered.shape[0]"
+      ],
+      "execution_count": 72,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "mlvLeIbROyop"
+      },
+      "source": [
+        "        import datetime\n",
+        "        import matplotlib.pyplot as plt\n",
+        "        import seaborn as sns"
+      ],
+      "execution_count": 73,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "iAN_vKeNQM7g",
+        "outputId": "f94c99ca-c5dc-4130-a42c-27c01861fb2c"
+      },
+      "source": [
+        "t1 = pd.read_csv(\"/t1_user_active_min.csv\")\n",
+        "print(\"the number of records is \",t1.shape)\n",
+        "t1.head()\n",
+        "t1['active_mins'].describe()\n"
+      ],
+      "execution_count": 74,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "the number of records is  (1066402, 3)\n"
+          ]
+        },
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "count    1.066402e+06\n",
+              "mean     3.616809e+01\n",
+              "std      1.270484e+03\n",
+              "min      1.000000e+00\n",
+              "25%      2.000000e+00\n",
+              "50%      5.000000e+00\n",
+              "75%      1.700000e+01\n",
+              "max      9.999900e+04\n",
+              "Name: active_mins, dtype: float64"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 74
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "lGQl1XD2SxKV",
+        "outputId": "61d54104-fd01-4b34-eabf-9d32524a9823"
+      },
+      "source": [
+        "len(t1.uid.unique())"
+      ],
+      "execution_count": 75,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "46633"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 75
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 419
+        },
+        "id": "aQwKd8dbTFML",
+        "outputId": "2a975e0f-056e-4f22-91ed-2bb877fb7680"
+      },
+      "source": [
+        "t1[(t1.active_mins > (24*60))]"
+      ],
+      "execution_count": 76,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/html": [
+              "<div>\n",
+              "<style scoped>\n",
+              "    .dataframe tbody tr th:only-of-type {\n",
+              "        vertical-align: middle;\n",
+              "    }\n",
+              "\n",
+              "    .dataframe tbody tr th {\n",
+              "        vertical-align: top;\n",
+              "    }\n",
+              "\n",
+              "    .dataframe thead th {\n",
+              "        text-align: right;\n",
+              "    }\n",
+              "</style>\n",
+              "<table border=\"1\" class=\"dataframe\">\n",
+              "  <thead>\n",
+              "    <tr style=\"text-align: right;\">\n",
+              "      <th></th>\n",
+              "      <th>uid</th>\n",
+              "      <th>dt</th>\n",
+              "      <th>active_mins</th>\n",
+              "    </tr>\n",
+              "  </thead>\n",
+              "  <tbody>\n",
+              "    <tr>\n",
+              "      <th>26670</th>\n",
+              "      <td>1219</td>\n",
+              "      <td>2019-02-22</td>\n",
+              "      <td>99999.0</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>38577</th>\n",
+              "      <td>1738</td>\n",
+              "      <td>2019-02-25</td>\n",
+              "      <td>99999.0</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>53137</th>\n",
+              "      <td>2398</td>\n",
+              "      <td>2019-04-19</td>\n",
+              "      <td>99999.0</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>69731</th>\n",
+              "      <td>3124</td>\n",
+              "      <td>2019-04-26</td>\n",
+              "      <td>99999.0</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>69742</th>\n",
+              "      <td>3124</td>\n",
+              "      <td>2019-05-10</td>\n",
+              "      <td>99999.0</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>...</th>\n",
+              "      <td>...</td>\n",
+              "      <td>...</td>\n",
+              "      <td>...</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>1057133</th>\n",
+              "      <td>49503</td>\n",
+              "      <td>2019-03-10</td>\n",
+              "      <td>99999.0</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>1057140</th>\n",
+              "      <td>49503</td>\n",
+              "      <td>2019-03-21</td>\n",
+              "      <td>99999.0</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>1057193</th>\n",
+              "      <td>49503</td>\n",
+              "      <td>2019-06-01</td>\n",
+              "      <td>99999.0</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>1057210</th>\n",
+              "      <td>49503</td>\n",
+              "      <td>2019-06-29</td>\n",
+              "      <td>99999.0</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>1063272</th>\n",
+              "      <td>49829</td>\n",
+              "      <td>2019-02-11</td>\n",
+              "      <td>99999.0</td>\n",
+              "    </tr>\n",
+              "  </tbody>\n",
+              "</table>\n",
+              "<p>172 rows × 3 columns</p>\n",
+              "</div>"
+            ],
+            "text/plain": [
+              "           uid          dt  active_mins\n",
+              "26670     1219  2019-02-22      99999.0\n",
+              "38577     1738  2019-02-25      99999.0\n",
+              "53137     2398  2019-04-19      99999.0\n",
+              "69731     3124  2019-04-26      99999.0\n",
+              "69742     3124  2019-05-10      99999.0\n",
+              "...        ...         ...          ...\n",
+              "1057133  49503  2019-03-10      99999.0\n",
+              "1057140  49503  2019-03-21      99999.0\n",
+              "1057193  49503  2019-06-01      99999.0\n",
+              "1057210  49503  2019-06-29      99999.0\n",
+              "1063272  49829  2019-02-11      99999.0\n",
+              "\n",
+              "[172 rows x 3 columns]"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 76
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "grFfyGYRUJNA",
+        "outputId": "9e50c0e9-e8af-4f9e-8029-699dfc017742"
+      },
+      "source": [
+        "t1 = t1[(t1.active_mins<=1440)]\n",
+        "t1.shape"
+      ],
+      "execution_count": 77,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "(1066230, 3)"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 77
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 429
+        },
+        "id": "Rn-0UzR4USfA",
+        "outputId": "49fe04f2-fe90-4c24-e94b-b015415442d5"
+      },
+      "source": [
+        "%matplotlib inline\n",
+        "t1['active_mins'].plot.hist()\n",
+        "t1['active_mins'].describe()"
+      ],
+      "execution_count": 78,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "count    1.066230e+06\n",
+              "mean     2.004248e+01\n",
+              "std      4.653763e+01\n",
+              "min      1.000000e+00\n",
+              "25%      2.000000e+00\n",
+              "50%      5.000000e+00\n",
+              "75%      1.700000e+01\n",
+              "max      8.970000e+02\n",
+              "Name: active_mins, dtype: float64"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 78
+        },
+        {
+          "output_type": "display_data",
+          "data": {
+            "image/png": "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\n",
+            "text/plain": [
+              "<Figure size 432x288 with 1 Axes>"
+            ]
+          },
+          "metadata": {
+            "needs_background": "light"
+          }
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 297
+        },
+        "id": "SX_Fg6ZvUcOO",
+        "outputId": "5a9dfa0a-6dbc-49b2-901c-1f4ae69e47c8"
+      },
+      "source": [
+        "sns.boxplot(x=t1['active_mins'])"
+      ],
+      "execution_count": 79,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "<matplotlib.axes._subplots.AxesSubplot at 0x7fcc67427fd0>"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 79
+        },
+        {
+          "output_type": "display_data",
+          "data": {
+            "image/png": "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\n",
+            "text/plain": [
+              "<Figure size 432x288 with 1 Axes>"
+            ]
+          },
+          "metadata": {
+            "needs_background": "light"
+          }
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 297
+        },
+        "id": "VP80JemhUxI3",
+        "outputId": "26a312c9-9a82-486b-fa16-ac0bfd5df3ed"
+      },
+      "source": [
+        "t1=t1[(t1.active_mins<(20+(3*46)))]\n",
+        "sns.boxplot(x=t1['active_mins'])\n"
+      ],
+      "execution_count": 80,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "<matplotlib.axes._subplots.AxesSubplot at 0x7fcc6738e9d0>"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 80
+        },
+        {
+          "output_type": "display_data",
+          "data": {
+            "image/png": "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\n",
+            "text/plain": [
+              "<Figure size 432x288 with 1 Axes>"
+            ]
+          },
+          "metadata": {
+            "needs_background": "light"
+          }
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "65Ej2w-vVUss",
+        "outputId": "41a6d820-4fe8-44fd-8520-d6ffe9b1033d"
+      },
+      "source": [
+        "# compute IQ range to filter outliers \n",
+        "q1 = t1['active_mins'].quantile(0.25) \n",
+        "q3 = t1['active_mins'].quantile(0.75) \n",
+        "print(q1,q3)\n",
+        "iqr = q3 - q1\n",
+        "cutoff = 1.5*iqr\n",
+        "t1 = t1[((t1.active_mins)> q1 - cutoff)]\n",
+        "t1 = t1[((t1.active_mins)< q3 + cutoff)]\n",
+        "\n"
+      ],
+      "execution_count": 81,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "2.0 15.0\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 297
+        },
+        "id": "DvByUOGCVrKf",
+        "outputId": "0ca06db7-963e-418f-b305-ebd7a167dbf2"
+      },
+      "source": [
+        "t1.shape\n",
+        "sns.boxplot(x=t1['active_mins'])"
+      ],
+      "execution_count": 82,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "<matplotlib.axes._subplots.AxesSubplot at 0x7fcc6737d790>"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 82
+        },
+        {
+          "output_type": "display_data",
+          "data": {
+            "image/png": "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\n",
+            "text/plain": [
+              "<Figure size 432x288 with 1 Axes>"
+            ]
+          },
+          "metadata": {
+            "needs_background": "light"
+          }
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 221
+        },
+        "id": "bnT3p2DYX_B_",
+        "outputId": "cf91713a-2380-44b7-de6d-0cd583e4b9cf"
+      },
+      "source": [
+        "#This table contains users treatment assignment.\n",
+        "#Each row represents the assignment information for a unique user. \n",
+        "t2 = pd.read_csv(\"/t2_user_variant.csv\")\n",
+        "print(\"the number of records is \",t2.shape)\n",
+        "t2.head()"
+      ],
+      "execution_count": 83,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "the number of records is  (50000, 4)\n"
+          ]
+        },
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/html": [
+              "<div>\n",
+              "<style scoped>\n",
+              "    .dataframe tbody tr th:only-of-type {\n",
+              "        vertical-align: middle;\n",
+              "    }\n",
+              "\n",
+              "    .dataframe tbody tr th {\n",
+              "        vertical-align: top;\n",
+              "    }\n",
+              "\n",
+              "    .dataframe thead th {\n",
+              "        text-align: right;\n",
+              "    }\n",
+              "</style>\n",
+              "<table border=\"1\" class=\"dataframe\">\n",
+              "  <thead>\n",
+              "    <tr style=\"text-align: right;\">\n",
+              "      <th></th>\n",
+              "      <th>uid</th>\n",
+              "      <th>variant_number</th>\n",
+              "      <th>dt</th>\n",
+              "      <th>signup_date</th>\n",
+              "    </tr>\n",
+              "  </thead>\n",
+              "  <tbody>\n",
+              "    <tr>\n",
+              "      <th>0</th>\n",
+              "      <td>0</td>\n",
+              "      <td>0</td>\n",
+              "      <td>2019-02-06</td>\n",
+              "      <td>2018-09-24</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>1</th>\n",
+              "      <td>1</td>\n",
+              "      <td>0</td>\n",
+              "      <td>2019-02-06</td>\n",
+              "      <td>2016-11-07</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>2</th>\n",
+              "      <td>2</td>\n",
+              "      <td>0</td>\n",
+              "      <td>2019-02-06</td>\n",
+              "      <td>2018-09-17</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>3</th>\n",
+              "      <td>3</td>\n",
+              "      <td>0</td>\n",
+              "      <td>2019-02-06</td>\n",
+              "      <td>2018-03-04</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>4</th>\n",
+              "      <td>4</td>\n",
+              "      <td>0</td>\n",
+              "      <td>2019-02-06</td>\n",
+              "      <td>2017-03-09</td>\n",
+              "    </tr>\n",
+              "  </tbody>\n",
+              "</table>\n",
+              "</div>"
+            ],
+            "text/plain": [
+              "   uid  variant_number          dt signup_date\n",
+              "0    0               0  2019-02-06  2018-09-24\n",
+              "1    1               0  2019-02-06  2016-11-07\n",
+              "2    2               0  2019-02-06  2018-09-17\n",
+              "3    3               0  2019-02-06  2018-03-04\n",
+              "4    4               0  2019-02-06  2017-03-09"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 83
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "IjjJkhoeX_JF",
+        "outputId": "93b0bec3-cfde-48da-863d-e279ab4a515e"
+      },
+      "source": [
+        "# check that we have a unique value for dt. t2.dt.unique()\n",
+        "t2.dt.unique()"
+      ],
+      "execution_count": 84,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "array(['2019-02-06'], dtype=object)"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 84
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "ywYrq95TX_Re",
+        "outputId": "60ecab30-077e-4c7c-9a0d-dd1a9a045b1e"
+      },
+      "source": [
+        "t2.variant_number.value_counts()"
+      ],
+      "execution_count": 85,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "0    40000\n",
+              "1    10000\n",
+              "Name: variant_number, dtype: int64"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 85
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "y9TqsulsX_YW"
+      },
+      "source": [
+        "#join by userid\n",
+        "merged_df = pd.merge(left=t1,right=t2, left_on='uid', right_on='uid')"
+      ],
+      "execution_count": 86,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "rJDXHtQMZ0DC",
+        "outputId": "be4cdfed-27b7-4205-9a0e-9bb78150eca9"
+      },
+      "source": [
+        "len(merged_df.uid.unique())"
+      ],
+      "execution_count": 87,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "46592"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 87
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 514
+        },
+        "id": "v6EDwlVIZ4yN",
+        "outputId": "9b8e6215-644a-4ca0-f1d6-5fe5a2119723"
+      },
+      "source": [
+        "merged_df.shape\n",
+        "merged_df.head(15)"
+      ],
+      "execution_count": 88,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/html": [
+              "<div>\n",
+              "<style scoped>\n",
+              "    .dataframe tbody tr th:only-of-type {\n",
+              "        vertical-align: middle;\n",
+              "    }\n",
+              "\n",
+              "    .dataframe tbody tr th {\n",
+              "        vertical-align: top;\n",
+              "    }\n",
+              "\n",
+              "    .dataframe thead th {\n",
+              "        text-align: right;\n",
+              "    }\n",
+              "</style>\n",
+              "<table border=\"1\" class=\"dataframe\">\n",
+              "  <thead>\n",
+              "    <tr style=\"text-align: right;\">\n",
+              "      <th></th>\n",
+              "      <th>uid</th>\n",
+              "      <th>dt_x</th>\n",
+              "      <th>active_mins</th>\n",
+              "      <th>variant_number</th>\n",
+              "      <th>dt_y</th>\n",
+              "      <th>signup_date</th>\n",
+              "    </tr>\n",
+              "  </thead>\n",
+              "  <tbody>\n",
+              "    <tr>\n",
+              "      <th>0</th>\n",
+              "      <td>0</td>\n",
+              "      <td>2019-02-22</td>\n",
+              "      <td>5.0</td>\n",
+              "      <td>0</td>\n",
+              "      <td>2019-02-06</td>\n",
+              "      <td>2018-09-24</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>1</th>\n",
+              "      <td>0</td>\n",
+              "      <td>2019-03-11</td>\n",
+              "      <td>5.0</td>\n",
+              "      <td>0</td>\n",
+              "      <td>2019-02-06</td>\n",
+              "      <td>2018-09-24</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>2</th>\n",
+              "      <td>0</td>\n",
+              "      <td>2019-03-18</td>\n",
+              "      <td>3.0</td>\n",
+              "      <td>0</td>\n",
+              "      <td>2019-02-06</td>\n",
+              "      <td>2018-09-24</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>3</th>\n",
+              "      <td>0</td>\n",
+              "      <td>2019-03-22</td>\n",
+              "      <td>4.0</td>\n",
+              "      <td>0</td>\n",
+              "      <td>2019-02-06</td>\n",
+              "      <td>2018-09-24</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>4</th>\n",
+              "      <td>0</td>\n",
+              "      <td>2019-04-03</td>\n",
+              "      <td>9.0</td>\n",
+              "      <td>0</td>\n",
+              "      <td>2019-02-06</td>\n",
+              "      <td>2018-09-24</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>5</th>\n",
+              "      <td>0</td>\n",
+              "      <td>2019-04-06</td>\n",
+              "      <td>1.0</td>\n",
+              "      <td>0</td>\n",
+              "      <td>2019-02-06</td>\n",
+              "      <td>2018-09-24</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>6</th>\n",
+              "      <td>0</td>\n",
+              "      <td>2019-04-17</td>\n",
+              "      <td>1.0</td>\n",
+              "      <td>0</td>\n",
+              "      <td>2019-02-06</td>\n",
+              "      <td>2018-09-24</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>7</th>\n",
+              "      <td>0</td>\n",
+              "      <td>2019-05-07</td>\n",
+              "      <td>3.0</td>\n",
+              "      <td>0</td>\n",
+              "      <td>2019-02-06</td>\n",
+              "      <td>2018-09-24</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>8</th>\n",
+              "      <td>0</td>\n",
+              "      <td>2019-05-14</td>\n",
+              "      <td>1.0</td>\n",
+              "      <td>0</td>\n",
+              "      <td>2019-02-06</td>\n",
+              "      <td>2018-09-24</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>9</th>\n",
+              "      <td>0</td>\n",
+              "      <td>2019-05-19</td>\n",
+              "      <td>1.0</td>\n",
+              "      <td>0</td>\n",
+              "      <td>2019-02-06</td>\n",
+              "      <td>2018-09-24</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>10</th>\n",
+              "      <td>0</td>\n",
+              "      <td>2019-05-22</td>\n",
+              "      <td>3.0</td>\n",
+              "      <td>0</td>\n",
+              "      <td>2019-02-06</td>\n",
+              "      <td>2018-09-24</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>11</th>\n",
+              "      <td>0</td>\n",
+              "      <td>2019-06-14</td>\n",
+              "      <td>5.0</td>\n",
+              "      <td>0</td>\n",
+              "      <td>2019-02-06</td>\n",
+              "      <td>2018-09-24</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>12</th>\n",
+              "      <td>0</td>\n",
+              "      <td>2019-06-16</td>\n",
+              "      <td>2.0</td>\n",
+              "      <td>0</td>\n",
+              "      <td>2019-02-06</td>\n",
+              "      <td>2018-09-24</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>13</th>\n",
+              "      <td>1</td>\n",
+              "      <td>2019-02-11</td>\n",
+              "      <td>23.0</td>\n",
+              "      <td>0</td>\n",
+              "      <td>2019-02-06</td>\n",
+              "      <td>2016-11-07</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>14</th>\n",
+              "      <td>1</td>\n",
+              "      <td>2019-02-16</td>\n",
+              "      <td>13.0</td>\n",
+              "      <td>0</td>\n",
+              "      <td>2019-02-06</td>\n",
+              "      <td>2016-11-07</td>\n",
+              "    </tr>\n",
+              "  </tbody>\n",
+              "</table>\n",
+              "</div>"
+            ],
+            "text/plain": [
+              "    uid        dt_x  active_mins  variant_number        dt_y signup_date\n",
+              "0     0  2019-02-22          5.0               0  2019-02-06  2018-09-24\n",
+              "1     0  2019-03-11          5.0               0  2019-02-06  2018-09-24\n",
+              "2     0  2019-03-18          3.0               0  2019-02-06  2018-09-24\n",
+              "3     0  2019-03-22          4.0               0  2019-02-06  2018-09-24\n",
+              "4     0  2019-04-03          9.0               0  2019-02-06  2018-09-24\n",
+              "5     0  2019-04-06          1.0               0  2019-02-06  2018-09-24\n",
+              "6     0  2019-04-17          1.0               0  2019-02-06  2018-09-24\n",
+              "7     0  2019-05-07          3.0               0  2019-02-06  2018-09-24\n",
+              "8     0  2019-05-14          1.0               0  2019-02-06  2018-09-24\n",
+              "9     0  2019-05-19          1.0               0  2019-02-06  2018-09-24\n",
+              "10    0  2019-05-22          3.0               0  2019-02-06  2018-09-24\n",
+              "11    0  2019-06-14          5.0               0  2019-02-06  2018-09-24\n",
+              "12    0  2019-06-16          2.0               0  2019-02-06  2018-09-24\n",
+              "13    1  2019-02-11         23.0               0  2019-02-06  2016-11-07\n",
+              "14    1  2019-02-16         13.0               0  2019-02-06  2016-11-07"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 88
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "zxJFxTVoZ9yu",
+        "outputId": "49e0d98a-0d27-4c09-841a-8976e0e552f5"
+      },
+      "source": [
+        "# double check that a user is only in one group \n",
+        "aux=merged_df.groupby('uid').variant_number.nunique() \n",
+        "max(aux)"
+      ],
+      "execution_count": 89,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "1"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 89
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "zLfmWCQDaDQ-",
+        "outputId": "355b872e-617d-444b-96cd-e0d0e61214a0"
+      },
+      "source": [
+        "merged_df.dtypes\n",
+        "min_date = min(merged_df['dt_x'])\n",
+        "max_date = max(merged_df['dt_x'])\n",
+        "print('min date is',min_date)\n",
+        "print('max date is',max_date)\n"
+      ],
+      "execution_count": 90,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "min date is 2019-02-06\n",
+            "max date is 2019-07-05\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "apj2_sFTaK_B",
+        "outputId": "0622149c-07ab-45a1-ad07-26557e4d791b"
+      },
+      "source": [
+        "# count records in each group \n",
+        "merged_df.variant_number.value_counts()\n"
+      ],
+      "execution_count": 91,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "0    763625\n",
+              "1    150904\n",
+              "Name: variant_number, dtype: int64"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 91
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "h-7laZskaQ17",
+        "outputId": "af4d05a3-699d-4a3f-88bd-abbbfae47c93"
+      },
+      "source": [
+        "# group by user to compute mean time across all his/her visit.\n",
+        "df = merged_df.groupby(['uid','variant_number'], as_index=False)['active_mins'].mean() \n",
+        "df.shape \n",
+        "# we have 46525 unique users in both groups\n",
+        "df.variant_number.value_counts()"
+      ],
+      "execution_count": 92,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "0    37400\n",
+              "1     9192\n",
+              "Name: variant_number, dtype: int64"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 92
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 111
+        },
+        "id": "V7IGWEe4aZ1s",
+        "outputId": "722f499a-4b2a-4f8c-fb3f-68513ffedf40"
+      },
+      "source": [
+        "df.head(10)\n",
+        "df.groupby('variant_number', as_index=False)['active_mins'].mean()"
+      ],
+      "execution_count": 93,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/html": [
+              "<div>\n",
+              "<style scoped>\n",
+              "    .dataframe tbody tr th:only-of-type {\n",
+              "        vertical-align: middle;\n",
+              "    }\n",
+              "\n",
+              "    .dataframe tbody tr th {\n",
+              "        vertical-align: top;\n",
+              "    }\n",
+              "\n",
+              "    .dataframe thead th {\n",
+              "        text-align: right;\n",
+              "    }\n",
+              "</style>\n",
+              "<table border=\"1\" class=\"dataframe\">\n",
+              "  <thead>\n",
+              "    <tr style=\"text-align: right;\">\n",
+              "      <th></th>\n",
+              "      <th>variant_number</th>\n",
+              "      <th>active_mins</th>\n",
+              "    </tr>\n",
+              "  </thead>\n",
+              "  <tbody>\n",
+              "    <tr>\n",
+              "      <th>0</th>\n",
+              "      <td>0</td>\n",
+              "      <td>5.128285</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>1</th>\n",
+              "      <td>1</td>\n",
+              "      <td>6.597849</td>\n",
+              "    </tr>\n",
+              "  </tbody>\n",
+              "</table>\n",
+              "</div>"
+            ],
+            "text/plain": [
+              "   variant_number  active_mins\n",
+              "0               0     5.128285\n",
+              "1               1     6.597849"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 93
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 373
+        },
+        "id": "o1CCIbOVafjU",
+        "outputId": "8cd84740-771e-47dc-ef6b-a97196a91d07"
+      },
+      "source": [
+        "%matplotlib inline\n",
+        "df.boxplot(column='active_mins',by='variant_number')"
+      ],
+      "execution_count": 94,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stderr",
+          "text": [
+            "/usr/local/lib/python3.7/dist-packages/numpy/core/_asarray.py:83: VisibleDeprecationWarning: Creating an ndarray from ragged nested sequences (which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. If you meant to do this, you must specify 'dtype=object' when creating the ndarray\n",
+            "  return array(a, dtype, copy=False, order=order)\n"
+          ]
+        },
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "<matplotlib.axes._subplots.AxesSubplot at 0x7fcc672ac550>"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 94
+        },
+        {
+          "output_type": "display_data",
+          "data": {
+            "image/png": "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\n",
+            "text/plain": [
+              "<Figure size 432x288 with 1 Axes>"
+            ]
+          },
+          "metadata": {
+            "needs_background": "light"
+          }
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 142
+        },
+        "id": "KXMEZ2xJak_r",
+        "outputId": "47f62398-12e9-41d4-d5be-26f27189c803"
+      },
+      "source": [
+        "# compute confidence interval on difference of means.\n",
+        "stats = df.groupby(['variant_number'])['active_mins'].agg(['mean', 'count', 'std','var'])\n",
+        "stats"
+      ],
+      "execution_count": 95,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/html": [
+              "<div>\n",
+              "<style scoped>\n",
+              "    .dataframe tbody tr th:only-of-type {\n",
+              "        vertical-align: middle;\n",
+              "    }\n",
+              "\n",
+              "    .dataframe tbody tr th {\n",
+              "        vertical-align: top;\n",
+              "    }\n",
+              "\n",
+              "    .dataframe thead th {\n",
+              "        text-align: right;\n",
+              "    }\n",
+              "</style>\n",
+              "<table border=\"1\" class=\"dataframe\">\n",
+              "  <thead>\n",
+              "    <tr style=\"text-align: right;\">\n",
+              "      <th></th>\n",
+              "      <th>mean</th>\n",
+              "      <th>count</th>\n",
+              "      <th>std</th>\n",
+              "      <th>var</th>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>variant_number</th>\n",
+              "      <th></th>\n",
+              "      <th></th>\n",
+              "      <th></th>\n",
+              "      <th></th>\n",
+              "    </tr>\n",
+              "  </thead>\n",
+              "  <tbody>\n",
+              "    <tr>\n",
+              "      <th>0</th>\n",
+              "      <td>5.128285</td>\n",
+              "      <td>37400</td>\n",
+              "      <td>4.094146</td>\n",
+              "      <td>16.762029</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>1</th>\n",
+              "      <td>6.597849</td>\n",
+              "      <td>9192</td>\n",
+              "      <td>3.961351</td>\n",
+              "      <td>15.692303</td>\n",
+              "    </tr>\n",
+              "  </tbody>\n",
+              "</table>\n",
+              "</div>"
+            ],
+            "text/plain": [
+              "                    mean  count       std        var\n",
+              "variant_number                                      \n",
+              "0               5.128285  37400  4.094146  16.762029\n",
+              "1               6.597849   9192  3.961351  15.692303"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 95
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "LIcCbHAXa83M",
+        "outputId": "3eba6a4f-eb11-4014-da5d-72760e2bce7e"
+      },
+      "source": [
+        "stats.loc[0]['var']"
+      ],
+      "execution_count": 96,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "16.762029324734673"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 96
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "Bnjr-ptrWNEz",
+        "outputId": "8e410c83-9780-4786-8524-8c2dfac3ab49"
+      },
+      "source": [
+        "import math\n",
+        "# estimated standard deviation of the difference between the two means.\n",
+        "sigma_dif = math.sqrt((stats.loc[0]['var']/stats.loc[0]['count'])+((stats.loc[1]['var']/stats.loc[1]['count'])))\n",
+        "upper = (stats.loc[1]['mean']-stats.loc[0]['mean']) + (1.96 * sigma_dif)\n",
+        "lower = (stats.loc[1]['mean']-stats.loc[0]['mean']) - (1.96 * sigma_dif)\n",
+        "print([lower,upper])"
+      ],
+      "execution_count": 97,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "[1.3785692932241436, 1.56055831660053]\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 221
+        },
+        "id": "iZVlgEX5b_un",
+        "outputId": "a7781f76-9a37-44ef-9214-f96857c47f2b"
+      },
+      "source": [
+        "#This table contains active minutes data before the experiment started. #It has a similar format as t1, except the dt range can extend before #the experiment start date.\n",
+        "t3 = pd.read_csv(\"/t3_user_active_min_pre.csv\")\n",
+        "print(\"the number of records is \",t3.shape)\n",
+        "t3.head()"
+      ],
+      "execution_count": 98,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "the number of records is  (1190093, 3)\n"
+          ]
+        },
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/html": [
+              "<div>\n",
+              "<style scoped>\n",
+              "    .dataframe tbody tr th:only-of-type {\n",
+              "        vertical-align: middle;\n",
+              "    }\n",
+              "\n",
+              "    .dataframe tbody tr th {\n",
+              "        vertical-align: top;\n",
+              "    }\n",
+              "\n",
+              "    .dataframe thead th {\n",
+              "        text-align: right;\n",
+              "    }\n",
+              "</style>\n",
+              "<table border=\"1\" class=\"dataframe\">\n",
+              "  <thead>\n",
+              "    <tr style=\"text-align: right;\">\n",
+              "      <th></th>\n",
+              "      <th>uid</th>\n",
+              "      <th>dt</th>\n",
+              "      <th>active_mins</th>\n",
+              "    </tr>\n",
+              "  </thead>\n",
+              "  <tbody>\n",
+              "    <tr>\n",
+              "      <th>0</th>\n",
+              "      <td>0</td>\n",
+              "      <td>2018-09-24</td>\n",
+              "      <td>3.0</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>1</th>\n",
+              "      <td>0</td>\n",
+              "      <td>2018-11-08</td>\n",
+              "      <td>4.0</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>2</th>\n",
+              "      <td>0</td>\n",
+              "      <td>2018-11-24</td>\n",
+              "      <td>3.0</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>3</th>\n",
+              "      <td>0</td>\n",
+              "      <td>2018-11-28</td>\n",
+              "      <td>6.0</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>4</th>\n",
+              "      <td>0</td>\n",
+              "      <td>2018-12-02</td>\n",
+              "      <td>6.0</td>\n",
+              "    </tr>\n",
+              "  </tbody>\n",
+              "</table>\n",
+              "</div>"
+            ],
+            "text/plain": [
+              "   uid          dt  active_mins\n",
+              "0    0  2018-09-24          3.0\n",
+              "1    0  2018-11-08          4.0\n",
+              "2    0  2018-11-24          3.0\n",
+              "3    0  2018-11-28          6.0\n",
+              "4    0  2018-12-02          6.0"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 98
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 429
+        },
+        "id": "C7Bjvov7cDQf",
+        "outputId": "3e3662f4-053e-4c67-f051-95dcbed062d4"
+      },
+      "source": [
+        "t3 = t3[(t3.active_mins<=1440)]\n",
+        "%matplotlib inline\n",
+        "t3['active_mins'].plot.hist()\n",
+        "t3['active_mins'].describe()"
+      ],
+      "execution_count": 99,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "count    1.189927e+06\n",
+              "mean     1.825735e+01\n",
+              "std      4.354546e+01\n",
+              "min      1.000000e+00\n",
+              "25%      2.000000e+00\n",
+              "50%      4.000000e+00\n",
+              "75%      1.400000e+01\n",
+              "max      8.970000e+02\n",
+              "Name: active_mins, dtype: float64"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 99
+        },
+        {
+          "output_type": "display_data",
+          "data": {
+            "image/png": "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\n",
+            "text/plain": [
+              "<Figure size 432x288 with 1 Axes>"
+            ]
+          },
+          "metadata": {
+            "needs_background": "light"
+          }
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 297
+        },
+        "id": "0EW2qnLPcDTI",
+        "outputId": "f7b0db12-5582-4fa7-f2c5-4787657adabe"
+      },
+      "source": [
+        "sns.boxplot(x=t3['active_mins'])"
+      ],
+      "execution_count": 100,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "<matplotlib.axes._subplots.AxesSubplot at 0x7fcc671aee10>"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 100
+        },
+        {
+          "output_type": "display_data",
+          "data": {
+            "image/png": "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\n",
+            "text/plain": [
+              "<Figure size 432x288 with 1 Axes>"
+            ]
+          },
+          "metadata": {
+            "needs_background": "light"
+          }
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 297
+        },
+        "id": "2ZMhk-2XcDV8",
+        "outputId": "be12ebe4-d5f3-44d3-fe86-08d44d2b84d0"
+      },
+      "source": [
+        "t3=t3[(t3.active_mins<(18.25+(3*43.54)))]\n",
+        "sns.boxplot(x=t3['active_mins'])"
+      ],
+      "execution_count": 101,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "<matplotlib.axes._subplots.AxesSubplot at 0x7fcc67164290>"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 101
+        },
+        {
+          "output_type": "display_data",
+          "data": {
+            "image/png": "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\n",
+            "text/plain": [
+              "<Figure size 432x288 with 1 Axes>"
+            ]
+          },
+          "metadata": {
+            "needs_background": "light"
+          }
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "f1WQRRSYcQzb",
+        "outputId": "ea5d1675-d952-4a36-cf19-bf8b80c4fc28"
+      },
+      "source": [
+        "# compute IQ range to filter outliers \n",
+        "q1 = t3['active_mins'].quantile(0.25) \n",
+        "q3 = t3['active_mins'].quantile(0.75) \n",
+        "print(q1,q3)\n",
+        "iqr = q3 - q1\n",
+        "cutoff = 1.5*iqr\n",
+        "t3 = t3[((t3.active_mins)> q1 - cutoff)]\n",
+        "t3 = t3[((t3.active_mins)< q3 + cutoff)]\n"
+      ],
+      "execution_count": 102,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "2.0 13.0\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 297
+        },
+        "id": "Kfq51I3JcQ1p",
+        "outputId": "164a7092-2f5d-4b90-ef3d-e7741e44fac7"
+      },
+      "source": [
+        "sns.boxplot(x=t3['active_mins'])"
+      ],
+      "execution_count": 103,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "<matplotlib.axes._subplots.AxesSubplot at 0x7fcc673ee350>"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 103
+        },
+        {
+          "output_type": "display_data",
+          "data": {
+            "image/png": "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\n",
+            "text/plain": [
+              "<Figure size 432x288 with 1 Axes>"
+            ]
+          },
+          "metadata": {
+            "needs_background": "light"
+          }
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "ZED55Q0YcQ3h",
+        "outputId": "f6a608f5-f033-4f16-8223-1b4e1ccffb82"
+      },
+      "source": [
+        "#check the dates of dataframe min_date = min(t3['dt']) max_date = max(t3['dt'])\n",
+        "print('min_date is',min_date)\n",
+        "print('max_date is',max_date)\n"
+      ],
+      "execution_count": 104,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "min_date is 2019-02-06\n",
+            "max_date is 2019-07-05\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "kwRIEmNccnvw"
+      },
+      "source": [
+        " merged_df2 = pd.merge(left=t3,right=t2, left_on='uid', right_on='uid')"
+      ],
+      "execution_count": 105,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 359
+        },
+        "id": "qh-iPbX8cnyB",
+        "outputId": "e07299d3-1b8f-4663-9874-4fa749015de7"
+      },
+      "source": [
+        "merged_df2.head(10)"
+      ],
+      "execution_count": 106,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/html": [
+              "<div>\n",
+              "<style scoped>\n",
+              "    .dataframe tbody tr th:only-of-type {\n",
+              "        vertical-align: middle;\n",
+              "    }\n",
+              "\n",
+              "    .dataframe tbody tr th {\n",
+              "        vertical-align: top;\n",
+              "    }\n",
+              "\n",
+              "    .dataframe thead th {\n",
+              "        text-align: right;\n",
+              "    }\n",
+              "</style>\n",
+              "<table border=\"1\" class=\"dataframe\">\n",
+              "  <thead>\n",
+              "    <tr style=\"text-align: right;\">\n",
+              "      <th></th>\n",
+              "      <th>uid</th>\n",
+              "      <th>dt_x</th>\n",
+              "      <th>active_mins</th>\n",
+              "      <th>variant_number</th>\n",
+              "      <th>dt_y</th>\n",
+              "      <th>signup_date</th>\n",
+              "    </tr>\n",
+              "  </thead>\n",
+              "  <tbody>\n",
+              "    <tr>\n",
+              "      <th>0</th>\n",
+              "      <td>0</td>\n",
+              "      <td>2018-09-24</td>\n",
+              "      <td>3.0</td>\n",
+              "      <td>0</td>\n",
+              "      <td>2019-02-06</td>\n",
+              "      <td>2018-09-24</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>1</th>\n",
+              "      <td>0</td>\n",
+              "      <td>2018-11-08</td>\n",
+              "      <td>4.0</td>\n",
+              "      <td>0</td>\n",
+              "      <td>2019-02-06</td>\n",
+              "      <td>2018-09-24</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>2</th>\n",
+              "      <td>0</td>\n",
+              "      <td>2018-11-24</td>\n",
+              "      <td>3.0</td>\n",
+              "      <td>0</td>\n",
+              "      <td>2019-02-06</td>\n",
+              "      <td>2018-09-24</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>3</th>\n",
+              "      <td>0</td>\n",
+              "      <td>2018-11-28</td>\n",
+              "      <td>6.0</td>\n",
+              "      <td>0</td>\n",
+              "      <td>2019-02-06</td>\n",
+              "      <td>2018-09-24</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>4</th>\n",
+              "      <td>0</td>\n",
+              "      <td>2018-12-02</td>\n",
+              "      <td>6.0</td>\n",
+              "      <td>0</td>\n",
+              "      <td>2019-02-06</td>\n",
+              "      <td>2018-09-24</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>5</th>\n",
+              "      <td>0</td>\n",
+              "      <td>2018-12-04</td>\n",
+              "      <td>1.0</td>\n",
+              "      <td>0</td>\n",
+              "      <td>2019-02-06</td>\n",
+              "      <td>2018-09-24</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>6</th>\n",
+              "      <td>0</td>\n",
+              "      <td>2018-12-07</td>\n",
+              "      <td>8.0</td>\n",
+              "      <td>0</td>\n",
+              "      <td>2019-02-06</td>\n",
+              "      <td>2018-09-24</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>7</th>\n",
+              "      <td>0</td>\n",
+              "      <td>2018-12-09</td>\n",
+              "      <td>5.0</td>\n",
+              "      <td>0</td>\n",
+              "      <td>2019-02-06</td>\n",
+              "      <td>2018-09-24</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>8</th>\n",
+              "      <td>0</td>\n",
+              "      <td>2018-12-14</td>\n",
+              "      <td>8.0</td>\n",
+              "      <td>0</td>\n",
+              "      <td>2019-02-06</td>\n",
+              "      <td>2018-09-24</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>9</th>\n",
+              "      <td>0</td>\n",
+              "      <td>2018-12-15</td>\n",
+              "      <td>2.0</td>\n",
+              "      <td>0</td>\n",
+              "      <td>2019-02-06</td>\n",
+              "      <td>2018-09-24</td>\n",
+              "    </tr>\n",
+              "  </tbody>\n",
+              "</table>\n",
+              "</div>"
+            ],
+            "text/plain": [
+              "   uid        dt_x  active_mins  variant_number        dt_y signup_date\n",
+              "0    0  2018-09-24          3.0               0  2019-02-06  2018-09-24\n",
+              "1    0  2018-11-08          4.0               0  2019-02-06  2018-09-24\n",
+              "2    0  2018-11-24          3.0               0  2019-02-06  2018-09-24\n",
+              "3    0  2018-11-28          6.0               0  2019-02-06  2018-09-24\n",
+              "4    0  2018-12-02          6.0               0  2019-02-06  2018-09-24\n",
+              "5    0  2018-12-04          1.0               0  2019-02-06  2018-09-24\n",
+              "6    0  2018-12-07          8.0               0  2019-02-06  2018-09-24\n",
+              "7    0  2018-12-09          5.0               0  2019-02-06  2018-09-24\n",
+              "8    0  2018-12-14          8.0               0  2019-02-06  2018-09-24\n",
+              "9    0  2018-12-15          2.0               0  2019-02-06  2018-09-24"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 106
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "oiIyCrRFcn0i",
+        "outputId": "e3703266-4ebb-4227-caf4-68157ad18d87"
+      },
+      "source": [
+        "merged_df2.variant_number.unique()\n",
+        "merged_df2.variant_number.value_counts()"
+      ],
+      "execution_count": 107,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "0    836069\n",
+              "1    178913\n",
+              "Name: variant_number, dtype: int64"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 107
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 204
+        },
+        "id": "V0OHUYkIcu0R",
+        "outputId": "02b5a3ba-60a0-47a3-f1c9-6085557e891a"
+      },
+      "source": [
+        "df2 = merged_df2.groupby(['uid','variant_number'], as_index=False)['active_mins'].mean()\n",
+        "df2.head()"
+      ],
+      "execution_count": 108,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/html": [
+              "<div>\n",
+              "<style scoped>\n",
+              "    .dataframe tbody tr th:only-of-type {\n",
+              "        vertical-align: middle;\n",
+              "    }\n",
+              "\n",
+              "    .dataframe tbody tr th {\n",
+              "        vertical-align: top;\n",
+              "    }\n",
+              "\n",
+              "    .dataframe thead th {\n",
+              "        text-align: right;\n",
+              "    }\n",
+              "</style>\n",
+              "<table border=\"1\" class=\"dataframe\">\n",
+              "  <thead>\n",
+              "    <tr style=\"text-align: right;\">\n",
+              "      <th></th>\n",
+              "      <th>uid</th>\n",
+              "      <th>variant_number</th>\n",
+              "      <th>active_mins</th>\n",
+              "    </tr>\n",
+              "  </thead>\n",
+              "  <tbody>\n",
+              "    <tr>\n",
+              "      <th>0</th>\n",
+              "      <td>0</td>\n",
+              "      <td>0</td>\n",
+              "      <td>3.333333</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>1</th>\n",
+              "      <td>1</td>\n",
+              "      <td>0</td>\n",
+              "      <td>20.333333</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>2</th>\n",
+              "      <td>2</td>\n",
+              "      <td>0</td>\n",
+              "      <td>3.700000</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>3</th>\n",
+              "      <td>3</td>\n",
+              "      <td>0</td>\n",
+              "      <td>3.833333</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>4</th>\n",
+              "      <td>4</td>\n",
+              "      <td>0</td>\n",
+              "      <td>2.357143</td>\n",
+              "    </tr>\n",
+              "  </tbody>\n",
+              "</table>\n",
+              "</div>"
+            ],
+            "text/plain": [
+              "   uid  variant_number  active_mins\n",
+              "0    0               0     3.333333\n",
+              "1    1               0    20.333333\n",
+              "2    2               0     3.700000\n",
+              "3    3               0     3.833333\n",
+              "4    4               0     2.357143"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 108
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "mgZ_gVaUcu2X"
+      },
+      "source": [
+        "# mean before is computed based on all the users before the beginning of the experiment \n",
+        "mean_before = df2['active_mins'].mean()\n",
+        "var_before = df2['active_mins'].var()\n",
+        "n_before = df2.shape[0]"
+      ],
+      "execution_count": 109,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "uIV9A6Nwcu43",
+        "outputId": "7ae075d7-c49d-47ae-a23e-8632f333a735"
+      },
+      "source": [
+        "#compute the mean after rollout but only for users under treatment\n",
+        "mean_after = df[df.variant_number==1]['active_mins'].mean()\n",
+        "var_after = df[df.variant_number==1]['active_mins'].var()\n",
+        "n_after = df[df.variant_number==1].shape[0]\n",
+        "print(n_after)"
+      ],
+      "execution_count": 110,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "9192\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "8Mf0Bfxve7DD",
+        "outputId": "2bdac587-e0c3-4cf3-abdd-f229a286614d"
+      },
+      "source": [
+        "# estimated standard deviation of the difference between the two means.\n",
+        "sigma_dif = math.sqrt((var_before/n_before)+(var_after/n_after))\n",
+        "upper = (mean_after-mean_before) + (1.96 * sigma_dif)\n",
+        "lower = (mean_after-mean_before) - (1.96 * sigma_dif)\n",
+        "print([lower,upper])\n"
+      ],
+      "execution_count": 111,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "[1.6104881471951662, 1.7831486249365176]\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 221
+        },
+        "id": "hpIi_qWme7FV",
+        "outputId": "7722ed19-624a-4734-d43b-624de2a745d9"
+      },
+      "source": [
+        "#This table contains data about some user attributes. #Each row represents attributes of a unique user.\n",
+        "t4 = pd.read_csv(\"/t4_user_attributes.csv\")\n",
+        "print(\"the number of records is \",t4.shape)\n",
+        "t4.head()"
+      ],
+      "execution_count": 112,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "the number of records is  (50000, 3)\n"
+          ]
+        },
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/html": [
+              "<div>\n",
+              "<style scoped>\n",
+              "    .dataframe tbody tr th:only-of-type {\n",
+              "        vertical-align: middle;\n",
+              "    }\n",
+              "\n",
+              "    .dataframe tbody tr th {\n",
+              "        vertical-align: top;\n",
+              "    }\n",
+              "\n",
+              "    .dataframe thead th {\n",
+              "        text-align: right;\n",
+              "    }\n",
+              "</style>\n",
+              "<table border=\"1\" class=\"dataframe\">\n",
+              "  <thead>\n",
+              "    <tr style=\"text-align: right;\">\n",
+              "      <th></th>\n",
+              "      <th>uid</th>\n",
+              "      <th>gender</th>\n",
+              "      <th>user_type</th>\n",
+              "    </tr>\n",
+              "  </thead>\n",
+              "  <tbody>\n",
+              "    <tr>\n",
+              "      <th>0</th>\n",
+              "      <td>0</td>\n",
+              "      <td>male</td>\n",
+              "      <td>non_reader</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>1</th>\n",
+              "      <td>1</td>\n",
+              "      <td>male</td>\n",
+              "      <td>reader</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>2</th>\n",
+              "      <td>2</td>\n",
+              "      <td>male</td>\n",
+              "      <td>non_reader</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>3</th>\n",
+              "      <td>3</td>\n",
+              "      <td>male</td>\n",
+              "      <td>non_reader</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>4</th>\n",
+              "      <td>4</td>\n",
+              "      <td>male</td>\n",
+              "      <td>non_reader</td>\n",
+              "    </tr>\n",
+              "  </tbody>\n",
+              "</table>\n",
+              "</div>"
+            ],
+            "text/plain": [
+              "   uid gender   user_type\n",
+              "0    0   male  non_reader\n",
+              "1    1   male      reader\n",
+              "2    2   male  non_reader\n",
+              "3    3   male  non_reader\n",
+              "4    4   male  non_reader"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 112
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 204
+        },
+        "id": "w0t5mC3Je7Hq",
+        "outputId": "42d463ff-504a-460b-b263-6a0b9b7b45a4"
+      },
+      "source": [
+        "t5 = pd.merge(left=t4,right=t2, left_on='uid', right_on='uid')\n",
+        "t5.head()"
+      ],
+      "execution_count": 113,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/html": [
+              "<div>\n",
+              "<style scoped>\n",
+              "    .dataframe tbody tr th:only-of-type {\n",
+              "        vertical-align: middle;\n",
+              "    }\n",
+              "\n",
+              "    .dataframe tbody tr th {\n",
+              "        vertical-align: top;\n",
+              "    }\n",
+              "\n",
+              "    .dataframe thead th {\n",
+              "        text-align: right;\n",
+              "    }\n",
+              "</style>\n",
+              "<table border=\"1\" class=\"dataframe\">\n",
+              "  <thead>\n",
+              "    <tr style=\"text-align: right;\">\n",
+              "      <th></th>\n",
+              "      <th>uid</th>\n",
+              "      <th>gender</th>\n",
+              "      <th>user_type</th>\n",
+              "      <th>variant_number</th>\n",
+              "      <th>dt</th>\n",
+              "      <th>signup_date</th>\n",
+              "    </tr>\n",
+              "  </thead>\n",
+              "  <tbody>\n",
+              "    <tr>\n",
+              "      <th>0</th>\n",
+              "      <td>0</td>\n",
+              "      <td>male</td>\n",
+              "      <td>non_reader</td>\n",
+              "      <td>0</td>\n",
+              "      <td>2019-02-06</td>\n",
+              "      <td>2018-09-24</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>1</th>\n",
+              "      <td>1</td>\n",
+              "      <td>male</td>\n",
+              "      <td>reader</td>\n",
+              "      <td>0</td>\n",
+              "      <td>2019-02-06</td>\n",
+              "      <td>2016-11-07</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>2</th>\n",
+              "      <td>2</td>\n",
+              "      <td>male</td>\n",
+              "      <td>non_reader</td>\n",
+              "      <td>0</td>\n",
+              "      <td>2019-02-06</td>\n",
+              "      <td>2018-09-17</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>3</th>\n",
+              "      <td>3</td>\n",
+              "      <td>male</td>\n",
+              "      <td>non_reader</td>\n",
+              "      <td>0</td>\n",
+              "      <td>2019-02-06</td>\n",
+              "      <td>2018-03-04</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>4</th>\n",
+              "      <td>4</td>\n",
+              "      <td>male</td>\n",
+              "      <td>non_reader</td>\n",
+              "      <td>0</td>\n",
+              "      <td>2019-02-06</td>\n",
+              "      <td>2017-03-09</td>\n",
+              "    </tr>\n",
+              "  </tbody>\n",
+              "</table>\n",
+              "</div>"
+            ],
+            "text/plain": [
+              "   uid gender   user_type  variant_number          dt signup_date\n",
+              "0    0   male  non_reader               0  2019-02-06  2018-09-24\n",
+              "1    1   male      reader               0  2019-02-06  2016-11-07\n",
+              "2    2   male  non_reader               0  2019-02-06  2018-09-17\n",
+              "3    3   male  non_reader               0  2019-02-06  2018-03-04\n",
+              "4    4   male  non_reader               0  2019-02-06  2017-03-09"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 113
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "N75foTwgfVIZ",
+        "outputId": "a1b30188-5f93-4202-b7d2-f5190b243119"
+      },
+      "source": [
+        "t5.shape"
+      ],
+      "execution_count": 114,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "(50000, 6)"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 114
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 142
+        },
+        "id": "AMkCPtXZfVK0",
+        "outputId": "2c070ae7-5f1b-4f6b-fa86-7990ef35d320"
+      },
+      "source": [
+        "pd.crosstab(t5['variant_number'],t5['gender']).apply(lambda r: r/r.sum(), axis=1)"
+      ],
+      "execution_count": 115,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/html": [
+              "<div>\n",
+              "<style scoped>\n",
+              "    .dataframe tbody tr th:only-of-type {\n",
+              "        vertical-align: middle;\n",
+              "    }\n",
+              "\n",
+              "    .dataframe tbody tr th {\n",
+              "        vertical-align: top;\n",
+              "    }\n",
+              "\n",
+              "    .dataframe thead th {\n",
+              "        text-align: right;\n",
+              "    }\n",
+              "</style>\n",
+              "<table border=\"1\" class=\"dataframe\">\n",
+              "  <thead>\n",
+              "    <tr style=\"text-align: right;\">\n",
+              "      <th>gender</th>\n",
+              "      <th>female</th>\n",
+              "      <th>male</th>\n",
+              "      <th>unknown</th>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>variant_number</th>\n",
+              "      <th></th>\n",
+              "      <th></th>\n",
+              "      <th></th>\n",
+              "    </tr>\n",
+              "  </thead>\n",
+              "  <tbody>\n",
+              "    <tr>\n",
+              "      <th>0</th>\n",
+              "      <td>0.290175</td>\n",
+              "      <td>0.555925</td>\n",
+              "      <td>0.1539</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>1</th>\n",
+              "      <td>0.287000</td>\n",
+              "      <td>0.552000</td>\n",
+              "      <td>0.1610</td>\n",
+              "    </tr>\n",
+              "  </tbody>\n",
+              "</table>\n",
+              "</div>"
+            ],
+            "text/plain": [
+              "gender            female      male  unknown\n",
+              "variant_number                             \n",
+              "0               0.290175  0.555925   0.1539\n",
+              "1               0.287000  0.552000   0.1610"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 115
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 142
+        },
+        "id": "JJiTnzKbfVM5",
+        "outputId": "7b65d460-a18e-4882-c8e9-0f23f018aa93"
+      },
+      "source": [
+        "pd.crosstab(t5['variant_number'],t5['user_type']).apply(lambda r: r/r.sum(), axis=1)"
+      ],
+      "execution_count": 116,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/html": [
+              "<div>\n",
+              "<style scoped>\n",
+              "    .dataframe tbody tr th:only-of-type {\n",
+              "        vertical-align: middle;\n",
+              "    }\n",
+              "\n",
+              "    .dataframe tbody tr th {\n",
+              "        vertical-align: top;\n",
+              "    }\n",
+              "\n",
+              "    .dataframe thead th {\n",
+              "        text-align: right;\n",
+              "    }\n",
+              "</style>\n",
+              "<table border=\"1\" class=\"dataframe\">\n",
+              "  <thead>\n",
+              "    <tr style=\"text-align: right;\">\n",
+              "      <th>user_type</th>\n",
+              "      <th>contributor</th>\n",
+              "      <th>new_user</th>\n",
+              "      <th>non_reader</th>\n",
+              "      <th>reader</th>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>variant_number</th>\n",
+              "      <th></th>\n",
+              "      <th></th>\n",
+              "      <th></th>\n",
+              "      <th></th>\n",
+              "    </tr>\n",
+              "  </thead>\n",
+              "  <tbody>\n",
+              "    <tr>\n",
+              "      <th>0</th>\n",
+              "      <td>0.022875</td>\n",
+              "      <td>0.091325</td>\n",
+              "      <td>0.717475</td>\n",
+              "      <td>0.168325</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>1</th>\n",
+              "      <td>0.012900</td>\n",
+              "      <td>0.123500</td>\n",
+              "      <td>0.736700</td>\n",
+              "      <td>0.126900</td>\n",
+              "    </tr>\n",
+              "  </tbody>\n",
+              "</table>\n",
+              "</div>"
+            ],
+            "text/plain": [
+              "user_type       contributor  new_user  non_reader    reader\n",
+              "variant_number                                             \n",
+              "0                  0.022875  0.091325    0.717475  0.168325\n",
+              "1                  0.012900  0.123500    0.736700  0.126900"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 116
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 173
+        },
+        "id": "xDvh8Z5YfepN",
+        "outputId": "4be4a4c4-ed1f-4dbf-da7d-fbc3bb38ae3e"
+      },
+      "source": [
+        "pd.crosstab(t5['gender'],t5['user_type']).apply(lambda r: r/r.sum(), axis=1)"
+      ],
+      "execution_count": 117,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/html": [
+              "<div>\n",
+              "<style scoped>\n",
+              "    .dataframe tbody tr th:only-of-type {\n",
+              "        vertical-align: middle;\n",
+              "    }\n",
+              "\n",
+              "    .dataframe tbody tr th {\n",
+              "        vertical-align: top;\n",
+              "    }\n",
+              "\n",
+              "    .dataframe thead th {\n",
+              "        text-align: right;\n",
+              "    }\n",
+              "</style>\n",
+              "<table border=\"1\" class=\"dataframe\">\n",
+              "  <thead>\n",
+              "    <tr style=\"text-align: right;\">\n",
+              "      <th>user_type</th>\n",
+              "      <th>contributor</th>\n",
+              "      <th>new_user</th>\n",
+              "      <th>non_reader</th>\n",
+              "      <th>reader</th>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>gender</th>\n",
+              "      <th></th>\n",
+              "      <th></th>\n",
+              "      <th></th>\n",
+              "      <th></th>\n",
+              "    </tr>\n",
+              "  </thead>\n",
+              "  <tbody>\n",
+              "    <tr>\n",
+              "      <th>female</th>\n",
+              "      <td>0.017200</td>\n",
+              "      <td>0.109898</td>\n",
+              "      <td>0.723907</td>\n",
+              "      <td>0.148995</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>male</th>\n",
+              "      <td>0.024462</td>\n",
+              "      <td>0.083619</td>\n",
+              "      <td>0.716108</td>\n",
+              "      <td>0.175812</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>unknown</th>\n",
+              "      <td>0.014937</td>\n",
+              "      <td>0.125676</td>\n",
+              "      <td>0.735127</td>\n",
+              "      <td>0.124260</td>\n",
+              "    </tr>\n",
+              "  </tbody>\n",
+              "</table>\n",
+              "</div>"
+            ],
+            "text/plain": [
+              "user_type  contributor  new_user  non_reader    reader\n",
+              "gender                                                \n",
+              "female        0.017200  0.109898    0.723907  0.148995\n",
+              "male          0.024462  0.083619    0.716108  0.175812\n",
+              "unknown       0.014937  0.125676    0.735127  0.124260"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 117
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 204
+        },
+        "id": "6Bak1gXPferf",
+        "outputId": "e3f5ee1f-96f9-4aa6-d95d-50304a1f823e"
+      },
+      "source": [
+        "merged_df3 = pd.merge(left=t1,right=t5, left_on='uid', right_on='uid')\n",
+        "merged_df3.head()"
+      ],
+      "execution_count": 118,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/html": [
+              "<div>\n",
+              "<style scoped>\n",
+              "    .dataframe tbody tr th:only-of-type {\n",
+              "        vertical-align: middle;\n",
+              "    }\n",
+              "\n",
+              "    .dataframe tbody tr th {\n",
+              "        vertical-align: top;\n",
+              "    }\n",
+              "\n",
+              "    .dataframe thead th {\n",
+              "        text-align: right;\n",
+              "    }\n",
+              "</style>\n",
+              "<table border=\"1\" class=\"dataframe\">\n",
+              "  <thead>\n",
+              "    <tr style=\"text-align: right;\">\n",
+              "      <th></th>\n",
+              "      <th>uid</th>\n",
+              "      <th>dt_x</th>\n",
+              "      <th>active_mins</th>\n",
+              "      <th>gender</th>\n",
+              "      <th>user_type</th>\n",
+              "      <th>variant_number</th>\n",
+              "      <th>dt_y</th>\n",
+              "      <th>signup_date</th>\n",
+              "    </tr>\n",
+              "  </thead>\n",
+              "  <tbody>\n",
+              "    <tr>\n",
+              "      <th>0</th>\n",
+              "      <td>0</td>\n",
+              "      <td>2019-02-22</td>\n",
+              "      <td>5.0</td>\n",
+              "      <td>male</td>\n",
+              "      <td>non_reader</td>\n",
+              "      <td>0</td>\n",
+              "      <td>2019-02-06</td>\n",
+              "      <td>2018-09-24</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>1</th>\n",
+              "      <td>0</td>\n",
+              "      <td>2019-03-11</td>\n",
+              "      <td>5.0</td>\n",
+              "      <td>male</td>\n",
+              "      <td>non_reader</td>\n",
+              "      <td>0</td>\n",
+              "      <td>2019-02-06</td>\n",
+              "      <td>2018-09-24</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>2</th>\n",
+              "      <td>0</td>\n",
+              "      <td>2019-03-18</td>\n",
+              "      <td>3.0</td>\n",
+              "      <td>male</td>\n",
+              "      <td>non_reader</td>\n",
+              "      <td>0</td>\n",
+              "      <td>2019-02-06</td>\n",
+              "      <td>2018-09-24</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>3</th>\n",
+              "      <td>0</td>\n",
+              "      <td>2019-03-22</td>\n",
+              "      <td>4.0</td>\n",
+              "      <td>male</td>\n",
+              "      <td>non_reader</td>\n",
+              "      <td>0</td>\n",
+              "      <td>2019-02-06</td>\n",
+              "      <td>2018-09-24</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>4</th>\n",
+              "      <td>0</td>\n",
+              "      <td>2019-04-03</td>\n",
+              "      <td>9.0</td>\n",
+              "      <td>male</td>\n",
+              "      <td>non_reader</td>\n",
+              "      <td>0</td>\n",
+              "      <td>2019-02-06</td>\n",
+              "      <td>2018-09-24</td>\n",
+              "    </tr>\n",
+              "  </tbody>\n",
+              "</table>\n",
+              "</div>"
+            ],
+            "text/plain": [
+              "   uid        dt_x  active_mins  ... variant_number        dt_y  signup_date\n",
+              "0    0  2019-02-22          5.0  ...              0  2019-02-06   2018-09-24\n",
+              "1    0  2019-03-11          5.0  ...              0  2019-02-06   2018-09-24\n",
+              "2    0  2019-03-18          3.0  ...              0  2019-02-06   2018-09-24\n",
+              "3    0  2019-03-22          4.0  ...              0  2019-02-06   2018-09-24\n",
+              "4    0  2019-04-03          9.0  ...              0  2019-02-06   2018-09-24\n",
+              "\n",
+              "[5 rows x 8 columns]"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 118
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "Y1XhW9ZLfet6",
+        "outputId": "a87553aa-092b-47bc-e1a2-c52a569a7079"
+      },
+      "source": [
+        "# group by user to compute mean time across all his/her visit.\n",
+        "df3 = merged_df3.groupby(['uid','variant_number','gender','user_type'], as_index=False)['active_mins'].mean()\n",
+        "df3.shape # we have 46525 unique users in both groups\n",
+        "#df3.variant_number.value_counts()"
+      ],
+      "execution_count": 119,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "(46592, 5)"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 119
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 204
+        },
+        "id": "jMVmjMaef83g",
+        "outputId": "a1512aa2-b6b3-4044-e920-261f83c7c4cb"
+      },
+      "source": [
+        "df3.head()"
+      ],
+      "execution_count": 120,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/html": [
+              "<div>\n",
+              "<style scoped>\n",
+              "    .dataframe tbody tr th:only-of-type {\n",
+              "        vertical-align: middle;\n",
+              "    }\n",
+              "\n",
+              "    .dataframe tbody tr th {\n",
+              "        vertical-align: top;\n",
+              "    }\n",
+              "\n",
+              "    .dataframe thead th {\n",
+              "        text-align: right;\n",
+              "    }\n",
+              "</style>\n",
+              "<table border=\"1\" class=\"dataframe\">\n",
+              "  <thead>\n",
+              "    <tr style=\"text-align: right;\">\n",
+              "      <th></th>\n",
+              "      <th>uid</th>\n",
+              "      <th>variant_number</th>\n",
+              "      <th>gender</th>\n",
+              "      <th>user_type</th>\n",
+              "      <th>active_mins</th>\n",
+              "    </tr>\n",
+              "  </thead>\n",
+              "  <tbody>\n",
+              "    <tr>\n",
+              "      <th>0</th>\n",
+              "      <td>0</td>\n",
+              "      <td>0</td>\n",
+              "      <td>male</td>\n",
+              "      <td>non_reader</td>\n",
+              "      <td>3.307692</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>1</th>\n",
+              "      <td>1</td>\n",
+              "      <td>0</td>\n",
+              "      <td>male</td>\n",
+              "      <td>reader</td>\n",
+              "      <td>15.500000</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>2</th>\n",
+              "      <td>2</td>\n",
+              "      <td>0</td>\n",
+              "      <td>male</td>\n",
+              "      <td>non_reader</td>\n",
+              "      <td>2.428571</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>3</th>\n",
+              "      <td>3</td>\n",
+              "      <td>0</td>\n",
+              "      <td>male</td>\n",
+              "      <td>non_reader</td>\n",
+              "      <td>3.208333</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>4</th>\n",
+              "      <td>4</td>\n",
+              "      <td>0</td>\n",
+              "      <td>male</td>\n",
+              "      <td>non_reader</td>\n",
+              "      <td>1.950000</td>\n",
+              "    </tr>\n",
+              "  </tbody>\n",
+              "</table>\n",
+              "</div>"
+            ],
+            "text/plain": [
+              "   uid  variant_number gender   user_type  active_mins\n",
+              "0    0               0   male  non_reader     3.307692\n",
+              "1    1               0   male      reader    15.500000\n",
+              "2    2               0   male  non_reader     2.428571\n",
+              "3    3               0   male  non_reader     3.208333\n",
+              "4    4               0   male  non_reader     1.950000"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 120
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "tt92401JgnmL"
+      },
+      "source": [
+        "df3.to_csv('df3_quora.csv')"
+      ],
+      "execution_count": 121,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 297
+        },
+        "id": "AHoyJQpjgnoM",
+        "outputId": "392f9359-f528-498b-ce43-0389d0583e4f"
+      },
+      "source": [
+        "#stats = df3.groupby(['variant_number','gender','user_type'])['active_mins'].agg(['mea #stats = df3.groupby(['variant_number','gender'])['active_mins'].agg(['mean', 'count', \n",
+        "stats = df3.groupby(['variant_number','user_type'])['active_mins'].agg(['mean', 'count', 'std','var']).reset_index()\n",
+        "stats"
+      ],
+      "execution_count": 122,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/html": [
+              "<div>\n",
+              "<style scoped>\n",
+              "    .dataframe tbody tr th:only-of-type {\n",
+              "        vertical-align: middle;\n",
+              "    }\n",
+              "\n",
+              "    .dataframe tbody tr th {\n",
+              "        vertical-align: top;\n",
+              "    }\n",
+              "\n",
+              "    .dataframe thead th {\n",
+              "        text-align: right;\n",
+              "    }\n",
+              "</style>\n",
+              "<table border=\"1\" class=\"dataframe\">\n",
+              "  <thead>\n",
+              "    <tr style=\"text-align: right;\">\n",
+              "      <th></th>\n",
+              "      <th>variant_number</th>\n",
+              "      <th>user_type</th>\n",
+              "      <th>mean</th>\n",
+              "      <th>count</th>\n",
+              "      <th>std</th>\n",
+              "      <th>var</th>\n",
+              "    </tr>\n",
+              "  </thead>\n",
+              "  <tbody>\n",
+              "    <tr>\n",
+              "      <th>0</th>\n",
+              "      <td>0</td>\n",
+              "      <td>contributor</td>\n",
+              "      <td>12.899051</td>\n",
+              "      <td>899</td>\n",
+              "      <td>5.699458</td>\n",
+              "      <td>32.483826</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>1</th>\n",
+              "      <td>0</td>\n",
+              "      <td>new_user</td>\n",
+              "      <td>3.093011</td>\n",
+              "      <td>2371</td>\n",
+              "      <td>2.279850</td>\n",
+              "      <td>5.197716</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>2</th>\n",
+              "      <td>0</td>\n",
+              "      <td>non_reader</td>\n",
+              "      <td>3.871265</td>\n",
+              "      <td>27454</td>\n",
+              "      <td>2.383263</td>\n",
+              "      <td>5.679943</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>3</th>\n",
+              "      <td>0</td>\n",
+              "      <td>reader</td>\n",
+              "      <td>9.973990</td>\n",
+              "      <td>6676</td>\n",
+              "      <td>4.975098</td>\n",
+              "      <td>24.751602</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>4</th>\n",
+              "      <td>1</td>\n",
+              "      <td>contributor</td>\n",
+              "      <td>12.284599</td>\n",
+              "      <td>126</td>\n",
+              "      <td>4.953894</td>\n",
+              "      <td>24.541064</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>5</th>\n",
+              "      <td>1</td>\n",
+              "      <td>new_user</td>\n",
+              "      <td>5.205105</td>\n",
+              "      <td>805</td>\n",
+              "      <td>3.877100</td>\n",
+              "      <td>15.031907</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>6</th>\n",
+              "      <td>1</td>\n",
+              "      <td>non_reader</td>\n",
+              "      <td>5.791209</td>\n",
+              "      <td>7007</td>\n",
+              "      <td>3.055977</td>\n",
+              "      <td>9.338997</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>7</th>\n",
+              "      <td>1</td>\n",
+              "      <td>reader</td>\n",
+              "      <td>11.427796</td>\n",
+              "      <td>1254</td>\n",
+              "      <td>4.394404</td>\n",
+              "      <td>19.310788</td>\n",
+              "    </tr>\n",
+              "  </tbody>\n",
+              "</table>\n",
+              "</div>"
+            ],
+            "text/plain": [
+              "   variant_number    user_type       mean  count       std        var\n",
+              "0               0  contributor  12.899051    899  5.699458  32.483826\n",
+              "1               0     new_user   3.093011   2371  2.279850   5.197716\n",
+              "2               0   non_reader   3.871265  27454  2.383263   5.679943\n",
+              "3               0       reader   9.973990   6676  4.975098  24.751602\n",
+              "4               1  contributor  12.284599    126  4.953894  24.541064\n",
+              "5               1     new_user   5.205105    805  3.877100  15.031907\n",
+              "6               1   non_reader   5.791209   7007  3.055977   9.338997\n",
+              "7               1       reader  11.427796   1254  4.394404  19.310788"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 122
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "r5FaPq8Zgnql",
+        "outputId": "e9e7c910-da4a-47a0-c15d-46c7a73264e0"
+      },
+      "source": [
+        "utype='contributor'\n",
+        "control = stats[(stats.variant_number==0) & (stats.user_type==utype)]\n",
+        "treat = stats[(stats.variant_number==1) & (stats.user_type==utype)]\n",
+        "#sigma_dif = math.sqrt((control['var'][0]/control['count'][0])+((treat['var'][0]/treat['count'][0])))\n",
+        "treat.iloc[0]['var']"
+      ],
+      "execution_count": 123,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "24.541064084589706"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 123
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "cwX9Po0gS_yj"
+      },
+      "source": [
+        "# create function to compute confidence interval given a user_type category and data fr \n",
+        "def ci_usertype(stats,utype):\n",
+        "    control = stats[(stats.variant_number==0) & (stats.user_type==utype)]\n",
+        "    treat = stats[(stats.variant_number==1) & (stats.user_type==utype)]\n",
+        "\n",
+        "    sigma_dif = math.sqrt((control.iloc[0]['var']/control.iloc[0]['count'])+((treat.iloc[0]['var']/treat.iloc[0]['count'])))\n",
+        "    upper = (treat.iloc[0]['mean']-control.iloc[0]['mean']) + (1.96 * sigma_dif)\n",
+        "    lower = (treat.iloc[0]['mean']-control.iloc[0]['mean']) - (1.96 * sigma_dif)\n",
+        "    return (lower,upper)\n",
+        "\n",
+        "\n"
+      ],
+      "execution_count": 124,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "qorq3f0LS_1N",
+        "outputId": "5369b14a-faca-46e1-c0fb-fb6192a7e9f6"
+      },
+      "source": [
+        "# run the function on all unique user_type categories\n",
+        "utypes=stats['user_type'].unique()\n",
+        "utypes=utypes.tolist()\n",
+        "utypes\n",
+        "for u in utypes:\n",
+        "  inter = ci_usertype(stats,u)\n",
+        "  print(u, '--->', inter)\n"
+      ],
+      "execution_count": 125,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "contributor ---> (-1.5562802312043122, 0.32737516671991473)\n",
+            "new_user ---> (1.8289748702191906, 2.395213143966364)\n",
+            "non_reader ---> (1.8430349784102926, 1.9968518549874075)\n",
+            "reader ---> (1.1828793767936503, 1.7247320296272903)\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 235
+        },
+        "id": "EQ6vwrG7S_3Q",
+        "outputId": "64818878-25b5-4f9f-dbf2-d3d56edb8f7c"
+      },
+      "source": [
+        "stats2 = df3.groupby(['variant_number','gender'])['active_mins'].agg(['mean', 'count', 'std','var']).reset_index()\n",
+        "\n",
+        "stats2"
+      ],
+      "execution_count": 126,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/html": [
+              "<div>\n",
+              "<style scoped>\n",
+              "    .dataframe tbody tr th:only-of-type {\n",
+              "        vertical-align: middle;\n",
+              "    }\n",
+              "\n",
+              "    .dataframe tbody tr th {\n",
+              "        vertical-align: top;\n",
+              "    }\n",
+              "\n",
+              "    .dataframe thead th {\n",
+              "        text-align: right;\n",
+              "    }\n",
+              "</style>\n",
+              "<table border=\"1\" class=\"dataframe\">\n",
+              "  <thead>\n",
+              "    <tr style=\"text-align: right;\">\n",
+              "      <th></th>\n",
+              "      <th>variant_number</th>\n",
+              "      <th>gender</th>\n",
+              "      <th>mean</th>\n",
+              "      <th>count</th>\n",
+              "      <th>std</th>\n",
+              "      <th>var</th>\n",
+              "    </tr>\n",
+              "  </thead>\n",
+              "  <tbody>\n",
+              "    <tr>\n",
+              "      <th>0</th>\n",
+              "      <td>0</td>\n",
+              "      <td>female</td>\n",
+              "      <td>4.837527</td>\n",
+              "      <td>10732</td>\n",
+              "      <td>3.831509</td>\n",
+              "      <td>14.680461</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>1</th>\n",
+              "      <td>0</td>\n",
+              "      <td>male</td>\n",
+              "      <td>5.400269</td>\n",
+              "      <td>20987</td>\n",
+              "      <td>4.299716</td>\n",
+              "      <td>18.487556</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>2</th>\n",
+              "      <td>0</td>\n",
+              "      <td>unknown</td>\n",
+              "      <td>4.672780</td>\n",
+              "      <td>5681</td>\n",
+              "      <td>3.699275</td>\n",
+              "      <td>13.684637</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>3</th>\n",
+              "      <td>1</td>\n",
+              "      <td>female</td>\n",
+              "      <td>6.300703</td>\n",
+              "      <td>2607</td>\n",
+              "      <td>3.804281</td>\n",
+              "      <td>14.472554</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>4</th>\n",
+              "      <td>1</td>\n",
+              "      <td>male</td>\n",
+              "      <td>6.807762</td>\n",
+              "      <td>5128</td>\n",
+              "      <td>4.029174</td>\n",
+              "      <td>16.234240</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>5</th>\n",
+              "      <td>1</td>\n",
+              "      <td>unknown</td>\n",
+              "      <td>6.390727</td>\n",
+              "      <td>1457</td>\n",
+              "      <td>3.953793</td>\n",
+              "      <td>15.632479</td>\n",
+              "    </tr>\n",
+              "  </tbody>\n",
+              "</table>\n",
+              "</div>"
+            ],
+            "text/plain": [
+              "   variant_number   gender      mean  count       std        var\n",
+              "0               0   female  4.837527  10732  3.831509  14.680461\n",
+              "1               0     male  5.400269  20987  4.299716  18.487556\n",
+              "2               0  unknown  4.672780   5681  3.699275  13.684637\n",
+              "3               1   female  6.300703   2607  3.804281  14.472554\n",
+              "4               1     male  6.807762   5128  4.029174  16.234240\n",
+              "5               1  unknown  6.390727   1457  3.953793  15.632479"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 126
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "lVpMU7I4UDyP"
+      },
+      "source": [
+        "#create function to compute confidence interval given a user_type category and data frame stats\n",
+        "def ci_gender(stats,gen):\n",
+        "    control = stats[(stats.variant_number==0) & (stats.gender==gen)]\n",
+        "    treat = stats[(stats.variant_number==1) & (stats.gender==gen)]\n",
+        "\n",
+        "    sigma_dif = math.sqrt((control.iloc[0]['var']/control.iloc[0]['count'])+((treat.iloc[0]['var']/treat.iloc[0]['count'])))\n",
+        "    upper = (treat.iloc[0]['mean']-control.iloc[0]['mean']) + (1.96 * sigma_dif)\n",
+        "    lower = (treat.iloc[0]['mean']-control.iloc[0]['mean']) - (1.96 * sigma_dif)\n",
+        "    return (lower,upper)\n"
+      ],
+      "execution_count": 127,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "mzSHRAAfUD0I",
+        "outputId": "8b119337-760c-4250-b9b7-23cfe0c2460d"
+      },
+      "source": [
+        "ugender=stats2['gender'].unique()\n",
+        "ugender=ugender.tolist()\n",
+        "ugender\n",
+        "\n",
+        "for g in ugender:\n",
+        "    inter = ci_gender(stats2,g)\n",
+        "    print(g, '--->', inter)"
+      ],
+      "execution_count": 128,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "female ---> (1.300138326376362, 1.6262138916758664)\n",
+            "male ---> (1.2828097703294088, 1.5321756508471551)\n",
+            "unknown ---> (1.4932885794241744, 1.942604487670122)\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 793
+        },
+        "id": "Gt9SZORaUD2m",
+        "outputId": "c7c55067-924e-4f88-c3cf-00482960c9a2"
+      },
+      "source": [
+        "stats3 = df3.groupby(['variant_number','gender','user_type'])['active_mins'].agg(['mean', 'count', 'std','var']).reset_index()\n",
+        "stats3"
+      ],
+      "execution_count": 129,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/html": [
+              "<div>\n",
+              "<style scoped>\n",
+              "    .dataframe tbody tr th:only-of-type {\n",
+              "        vertical-align: middle;\n",
+              "    }\n",
+              "\n",
+              "    .dataframe tbody tr th {\n",
+              "        vertical-align: top;\n",
+              "    }\n",
+              "\n",
+              "    .dataframe thead th {\n",
+              "        text-align: right;\n",
+              "    }\n",
+              "</style>\n",
+              "<table border=\"1\" class=\"dataframe\">\n",
+              "  <thead>\n",
+              "    <tr style=\"text-align: right;\">\n",
+              "      <th></th>\n",
+              "      <th>variant_number</th>\n",
+              "      <th>gender</th>\n",
+              "      <th>user_type</th>\n",
+              "      <th>mean</th>\n",
+              "      <th>count</th>\n",
+              "      <th>std</th>\n",
+              "      <th>var</th>\n",
+              "    </tr>\n",
+              "  </thead>\n",
+              "  <tbody>\n",
+              "    <tr>\n",
+              "      <th>0</th>\n",
+              "      <td>0</td>\n",
+              "      <td>female</td>\n",
+              "      <td>contributor</td>\n",
+              "      <td>11.230131</td>\n",
+              "      <td>222</td>\n",
+              "      <td>5.392291</td>\n",
+              "      <td>29.076804</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>1</th>\n",
+              "      <td>0</td>\n",
+              "      <td>female</td>\n",
+              "      <td>new_user</td>\n",
+              "      <td>3.047010</td>\n",
+              "      <td>762</td>\n",
+              "      <td>2.291902</td>\n",
+              "      <td>5.252813</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>2</th>\n",
+              "      <td>0</td>\n",
+              "      <td>female</td>\n",
+              "      <td>non_reader</td>\n",
+              "      <td>3.749526</td>\n",
+              "      <td>7937</td>\n",
+              "      <td>2.343144</td>\n",
+              "      <td>5.490326</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>3</th>\n",
+              "      <td>0</td>\n",
+              "      <td>female</td>\n",
+              "      <td>reader</td>\n",
+              "      <td>9.575620</td>\n",
+              "      <td>1811</td>\n",
+              "      <td>4.815656</td>\n",
+              "      <td>23.190547</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>4</th>\n",
+              "      <td>0</td>\n",
+              "      <td>male</td>\n",
+              "      <td>contributor</td>\n",
+              "      <td>13.635331</td>\n",
+              "      <td>582</td>\n",
+              "      <td>5.572691</td>\n",
+              "      <td>31.054890</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>5</th>\n",
+              "      <td>0</td>\n",
+              "      <td>male</td>\n",
+              "      <td>new_user</td>\n",
+              "      <td>3.156869</td>\n",
+              "      <td>1132</td>\n",
+              "      <td>2.300288</td>\n",
+              "      <td>5.291326</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>6</th>\n",
+              "      <td>0</td>\n",
+              "      <td>male</td>\n",
+              "      <td>non_reader</td>\n",
+              "      <td>3.952469</td>\n",
+              "      <td>15186</td>\n",
+              "      <td>2.394167</td>\n",
+              "      <td>5.732037</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>7</th>\n",
+              "      <td>0</td>\n",
+              "      <td>male</td>\n",
+              "      <td>reader</td>\n",
+              "      <td>10.228509</td>\n",
+              "      <td>4087</td>\n",
+              "      <td>5.060518</td>\n",
+              "      <td>25.608845</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>8</th>\n",
+              "      <td>0</td>\n",
+              "      <td>unknown</td>\n",
+              "      <td>contributor</td>\n",
+              "      <td>12.288369</td>\n",
+              "      <td>95</td>\n",
+              "      <td>6.301249</td>\n",
+              "      <td>39.705744</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>9</th>\n",
+              "      <td>0</td>\n",
+              "      <td>unknown</td>\n",
+              "      <td>new_user</td>\n",
+              "      <td>3.014949</td>\n",
+              "      <td>477</td>\n",
+              "      <td>2.211301</td>\n",
+              "      <td>4.889854</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>10</th>\n",
+              "      <td>0</td>\n",
+              "      <td>unknown</td>\n",
+              "      <td>non_reader</td>\n",
+              "      <td>3.809639</td>\n",
+              "      <td>4331</td>\n",
+              "      <td>2.406931</td>\n",
+              "      <td>5.793315</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>11</th>\n",
+              "      <td>0</td>\n",
+              "      <td>unknown</td>\n",
+              "      <td>reader</td>\n",
+              "      <td>9.564257</td>\n",
+              "      <td>778</td>\n",
+              "      <td>4.802609</td>\n",
+              "      <td>23.065049</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>12</th>\n",
+              "      <td>1</td>\n",
+              "      <td>female</td>\n",
+              "      <td>contributor</td>\n",
+              "      <td>11.739485</td>\n",
+              "      <td>26</td>\n",
+              "      <td>3.932190</td>\n",
+              "      <td>15.462116</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>13</th>\n",
+              "      <td>1</td>\n",
+              "      <td>female</td>\n",
+              "      <td>new_user</td>\n",
+              "      <td>5.155586</td>\n",
+              "      <td>275</td>\n",
+              "      <td>3.522969</td>\n",
+              "      <td>12.411310</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>14</th>\n",
+              "      <td>1</td>\n",
+              "      <td>female</td>\n",
+              "      <td>non_reader</td>\n",
+              "      <td>5.625267</td>\n",
+              "      <td>1974</td>\n",
+              "      <td>3.152724</td>\n",
+              "      <td>9.939666</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>15</th>\n",
+              "      <td>1</td>\n",
+              "      <td>female</td>\n",
+              "      <td>reader</td>\n",
+              "      <td>10.839289</td>\n",
+              "      <td>332</td>\n",
+              "      <td>4.057074</td>\n",
+              "      <td>16.459850</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>16</th>\n",
+              "      <td>1</td>\n",
+              "      <td>male</td>\n",
+              "      <td>contributor</td>\n",
+              "      <td>12.821921</td>\n",
+              "      <td>81</td>\n",
+              "      <td>5.110874</td>\n",
+              "      <td>26.121031</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>17</th>\n",
+              "      <td>1</td>\n",
+              "      <td>male</td>\n",
+              "      <td>new_user</td>\n",
+              "      <td>5.270762</td>\n",
+              "      <td>375</td>\n",
+              "      <td>4.162620</td>\n",
+              "      <td>17.327408</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>18</th>\n",
+              "      <td>1</td>\n",
+              "      <td>male</td>\n",
+              "      <td>non_reader</td>\n",
+              "      <td>5.907781</td>\n",
+              "      <td>3926</td>\n",
+              "      <td>3.016134</td>\n",
+              "      <td>9.097063</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>19</th>\n",
+              "      <td>1</td>\n",
+              "      <td>male</td>\n",
+              "      <td>reader</td>\n",
+              "      <td>11.663727</td>\n",
+              "      <td>746</td>\n",
+              "      <td>4.391920</td>\n",
+              "      <td>19.288964</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>20</th>\n",
+              "      <td>1</td>\n",
+              "      <td>unknown</td>\n",
+              "      <td>contributor</td>\n",
+              "      <td>10.739854</td>\n",
+              "      <td>19</td>\n",
+              "      <td>5.348662</td>\n",
+              "      <td>28.608184</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>21</th>\n",
+              "      <td>1</td>\n",
+              "      <td>unknown</td>\n",
+              "      <td>new_user</td>\n",
+              "      <td>5.134112</td>\n",
+              "      <td>155</td>\n",
+              "      <td>3.780874</td>\n",
+              "      <td>14.295010</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>22</th>\n",
+              "      <td>1</td>\n",
+              "      <td>unknown</td>\n",
+              "      <td>non_reader</td>\n",
+              "      <td>5.673688</td>\n",
+              "      <td>1107</td>\n",
+              "      <td>3.005282</td>\n",
+              "      <td>9.031720</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>23</th>\n",
+              "      <td>1</td>\n",
+              "      <td>unknown</td>\n",
+              "      <td>reader</td>\n",
+              "      <td>11.537905</td>\n",
+              "      <td>176</td>\n",
+              "      <td>4.910213</td>\n",
+              "      <td>24.110196</td>\n",
+              "    </tr>\n",
+              "  </tbody>\n",
+              "</table>\n",
+              "</div>"
+            ],
+            "text/plain": [
+              "    variant_number   gender    user_type       mean  count       std        var\n",
+              "0                0   female  contributor  11.230131    222  5.392291  29.076804\n",
+              "1                0   female     new_user   3.047010    762  2.291902   5.252813\n",
+              "2                0   female   non_reader   3.749526   7937  2.343144   5.490326\n",
+              "3                0   female       reader   9.575620   1811  4.815656  23.190547\n",
+              "4                0     male  contributor  13.635331    582  5.572691  31.054890\n",
+              "5                0     male     new_user   3.156869   1132  2.300288   5.291326\n",
+              "6                0     male   non_reader   3.952469  15186  2.394167   5.732037\n",
+              "7                0     male       reader  10.228509   4087  5.060518  25.608845\n",
+              "8                0  unknown  contributor  12.288369     95  6.301249  39.705744\n",
+              "9                0  unknown     new_user   3.014949    477  2.211301   4.889854\n",
+              "10               0  unknown   non_reader   3.809639   4331  2.406931   5.793315\n",
+              "11               0  unknown       reader   9.564257    778  4.802609  23.065049\n",
+              "12               1   female  contributor  11.739485     26  3.932190  15.462116\n",
+              "13               1   female     new_user   5.155586    275  3.522969  12.411310\n",
+              "14               1   female   non_reader   5.625267   1974  3.152724   9.939666\n",
+              "15               1   female       reader  10.839289    332  4.057074  16.459850\n",
+              "16               1     male  contributor  12.821921     81  5.110874  26.121031\n",
+              "17               1     male     new_user   5.270762    375  4.162620  17.327408\n",
+              "18               1     male   non_reader   5.907781   3926  3.016134   9.097063\n",
+              "19               1     male       reader  11.663727    746  4.391920  19.288964\n",
+              "20               1  unknown  contributor  10.739854     19  5.348662  28.608184\n",
+              "21               1  unknown     new_user   5.134112    155  3.780874  14.295010\n",
+              "22               1  unknown   non_reader   5.673688   1107  3.005282   9.031720\n",
+              "23               1  unknown       reader  11.537905    176  4.910213  24.110196"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 129
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "yItV9aZ5UD5X",
+        "outputId": "a8fabd17-a051-468e-d76a-0988e046b3aa"
+      },
+      "source": [
+        "covariates = [(a,b) for a in ugender for b in utypes]\n",
+        "covariates\n",
+        "len(covariates)"
+      ],
+      "execution_count": 130,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "12"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 130
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "9-CXDJhiUiuI"
+      },
+      "source": [
+        "def ci_covariates(stats,cov):\n",
+        "    control = stats[(stats.variant_number==0) & (stats.gender==cov[0]) & (stats.user_type==cov[1])]\n",
+        "    treat = stats[(stats.variant_number==1) & (stats.gender==cov[0]) & (stats.user_type==cov[1])]\n",
+        "\n",
+        "    sigma_dif = math.sqrt((control.iloc[0]['var']/control.iloc[0]['count'])+((treat.iloc[0]['var']/treat.iloc[0]['count'])))\n",
+        "    upper = (treat.iloc[0]['mean']-control.iloc[0]['mean']) + (1.96 * sigma_dif)\n",
+        "    lower = (treat.iloc[0]['mean']-control.iloc[0]['mean']) - (1.96 * sigma_dif)\n",
+        "    return (lower,upper)\n"
+      ],
+      "execution_count": 131,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "-gD37--JUiwR",
+        "outputId": "eeba2afb-20a0-45b5-eb29-0454c5fdb03b"
+      },
+      "source": [
+        "for c in covariates:\n",
+        "    inter = ci_covariates(stats3,c)\n",
+        "    print(c, '--->', inter)"
+      ],
+      "execution_count": 132,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "('female', 'contributor') ---> (-1.1603010921102752, 2.179008273242763)\n",
+            "('female', 'new_user') ---> (1.661517663787515, 2.5556342674415693)\n",
+            "('female', 'non_reader') ---> (1.7274142325120783, 2.0240686325941724)\n",
+            "('female', 'reader') ---> (0.7741271489693305, 1.7532113565484448)\n",
+            "('male', 'contributor') ---> (-2.015004990734636, 0.38818451199164383)\n",
+            "('male', 'new_user') ---> (1.6717803448317423, 2.5560053078940075)\n",
+            "('male', 'non_reader') ---> (1.8535703084155717, 2.0570552387624854)\n",
+            "('male', 'reader') ---> (1.083932467051081, 1.7865037356437237)\n",
+            "('unknown', 'contributor') ---> (-4.266950765212244, 1.1699197984316614)\n",
+            "('unknown', 'new_user') ---> (1.4917267250608952, 2.746599099769815)\n",
+            "('unknown', 'non_reader') ---> (1.6730487611984501, 2.0550501878485545)\n",
+            "('unknown', 'reader') ---> (1.1735532611587922, 2.773740955280571)\n"
+          ]
+        }
+      ]
+    }
+  ]
+}
